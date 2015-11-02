@@ -86,7 +86,7 @@ angular
       redirectUri: window.location.origin || window.location.protocol + '//' + window.location.host,
       requiredUrlParams: ['scope'],
       optionalUrlParams: ['display'],
-      scope: ['openid','profile', 'email'],
+      scope: ['profile', 'email'],
       scopePrefix: 'openid',
       clientId: '119243385812-0furu31bg1rbhjgl5jaqb3at8bkf28bk.apps.googleusercontent.com',
       scopeDelimiter: ' ',
