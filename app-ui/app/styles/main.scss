@@ -23,19 +23,7 @@ a:hover {
   color: #1c5380;
 }
 
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 10px;
 
-  /* Make the masthead heading the same height as the navigation */
-  h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
-    padding-bottom: 19px;
-  }
-}
 
 /* Custom page footer */
 .footer {
@@ -102,11 +90,12 @@ a:hover {
   min-height: 50px;
   border: 0;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
+  border-radius: 0px;
 }
 
 .navbar-header {
   float: left;
-  padding-left: 15px;
+  padding-left: 30px;
 }
 
 .navbar-brand {

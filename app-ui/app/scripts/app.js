@@ -23,19 +23,7 @@ angular
 
   .config(function ($routeProvider,$authProvider) {
     
-    $authProvider.loginUrl = 'http://localhost:3000/auth/login';
-    $authProvider.signupUrl = 'http://localhost:3000/auth/signup';
-    
-    $authProvider.oauth2({
-      name: 'instagram',
-      url: 'http://localhost:3000/auth/instagram',
-      redirectUri: 'http://localhost:8000',
-      clientId: '799d1f8ea0e44ac8b70e7f18fcacedd1',
-      requiredUrlParams: ['scope'],
-      scope: ['likes'],
-      scopeDelimiter: '+',
-      authorizationEndpoint: 'https://api.instagram.com/oauth/authorize'
-    });
+   
 
     // $routeProvider
     // .state('app', {
@@ -79,9 +67,22 @@ angular
         redirectTo: '/'
       });
       
+    $authProvider.loginUrl = 'http://localhost:3000/auth/login';
+    $authProvider.signupUrl = 'http://localhost:3000/auth/signup';
+    $authProvider.oauth2({
+      name: 'instagram',
+      url: 'http://localhost:3000/auth/instagram',
+      redirectUri: 'http://localhost:9000',
+      clientId: '421b66a865f1434c92566ba006492331',
+      requiredUrlParams: ['scope'],
+      scope: ['likes'],
+      scopeDelimiter: '+',
+      authorizationEndpoint: 'https://api.instagram.com/oauth/authorize'
+    }); //Client Secret : 03ff12bd27a74a7c9aa8914b0dc3fe3e
+
       //Oauth 2 configuration 
     $authProvider.google({
-      url: '/auth/google',
+      url: 'http://localhost:3000/auth/google',
       authorizationEndpoint: 'https://accounts.google.com/o/oauth2/auth',
       redirectUri: window.location.origin || window.location.protocol + '//' + window.location.host,
       requiredUrlParams: ['scope'],
@@ -96,28 +97,6 @@ angular
     });
       //gsKMNjrx78bPOkDjJC-9_CjB : Client Secret for google
   
-    // Generic OAuth 2.0
-    $authProvider.oauth2({
-      name: null,
-      url: null,
-      clientId: null,
-      redirectUri: null,
-      authorizationEndpoint: null,
-      defaultUrlParams: ['response_type', 'client_id', 'redirect_uri'],
-      requiredUrlParams: null,
-      optionalUrlParams: null,
-      scope: null,
-      scopePrefix: null,
-      scopeDelimiter: null,
-      state: null,
-      type: null,
-      popupOptions: null,
-      responseType: 'code',
-      responseParams: {
-        code: 'code',
-        clientId: 'clientId',
-        redirectUri: 'redirectUri'
-      }
-    });
+  
 
   });

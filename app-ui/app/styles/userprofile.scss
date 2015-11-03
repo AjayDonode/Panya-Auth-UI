@@ -1,0 +1,46 @@
+$profile-card-width: 100%;
+$profile-card-height: 200px;
+
+
+ .profile {
+    min-width: 730px;
+  }
+
+.profile-card {
+  background: url('https://pbs.twimg.com/profile_banners/1330944336/1401769745/1500x500') top right no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+  width: $profile-card-width;
+  height: $profile-card-height;
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-card__door {
+  width: $profile-card-width*0.5;
+  left: 0;
+  position: relative;
+  transition: all .5s ease-in-out;
+}
+
+.profile-card__door:hover {
+  box-shadow: inset $profile-card-width 0 350px black;
+}
+
+.profile-card__front,
+.profile-card__back {
+  text-align: center;
+  width: $profile-card-width;
+  float: left;
+  color: white;
+  position: relative;
+  text-shadow: 0 1px 0 black;
+  font-size: 0.9em;
+}
+
+.profile-card__avatar {
+  border: 2px solid white;
+  border-radius: 5px;
+  width: 75px;
+  height: 75px;
+}

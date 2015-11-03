@@ -4,13 +4,12 @@ module.exports = function(app){
 	var bcrypt = require('bcryptjs');
 	var moment = require('moment'); 
 	var jwt = require('jwt-simple');
+	var request = require('request');
 
 	/*GET users Listing*/
 	console.log('==================================');
 	console.log('========: Services are Up :=======');
 	console.log('==================================');
-	//var jwt = require('jsonwebtoken');
-	//var superSecret = new Buffer('walkinonsunshine', 'base64');
 
 	//test Service 
 	app.get('/api/test', function(req,res){
@@ -67,8 +66,96 @@ module.exports = function(app){
 	  });
 	});
 
+
+	app.post('/auth/instagram', function(req, res) {
+  	var accessTokenUrl = 'https://api.instagram.com/oauth/access_token';
+
+	  var params = {
+	    client_id: req.body.clientId,
+	    redirect_uri: req.body.redirectUri,
+	    client_secret: config.clientSecret,
+	    code: req.body.code,
+	    grant_type: 'authorization_code'
+	  };
+
+	  console.log("client_id "+params.client_id);
+	   console.log("redirect_uri "+params.redirect_uri);
+	    console.log("client_secret "+params.client_secret);
+	     console.log("code "+params.code);
+
+  // Step 1\. Exchange authorization code for access token.
+  request.post({ url: accessTokenUrl, form: params, json: true }, function(error, response, body) {
+
+    // Step 2a. Link user accounts.
+    if (req.headers.authorization) {
+
+      User.findOne({ instagramId: body.user.id }, function(err, existingUser) {
+
+        var token = req.headers.authorization.split(' ')[1];
+        var payload = jwt.decode(token, config.tokenSecret);
+
+        User.findById(payload.sub, '+password', function(err, localUser) {
+          if (!localUser) {
+            return res.status(400).send({ message: 'User not found.' });
+          }
+
+          // Merge two accounts.
+          if (existingUser) {
+
+            existingUser.email = localUser.email;
+            existingUser.password = localUser.password;
+
+            localUser.remove();
+
+            existingUser.save(function() {
+              var token = createToken(existingUser);
+              return res.send({ token: token, user: existingUser });
+            });
+
+          } else {
+            // Link current email account with the Instagram profile information.
+            localUser.instagramId = body.user.id;
+            localUser.username = body.user.username;
+            localUser.fullName = body.user.full_name;
+            localUser.picture = body.user.profile_picture;
+            localUser.accessToken = body.access_token;
+
+            localUser.save(function() {
+              var token = createToken(localUser);
+              res.send({ token: token, user: localUser });
+            });
+
+          }
+        });
+      });
+    } else {
+      // Step 2b. Create a new user account or return an existing one.
+      User.findOne({ instagramId: body.user.id }, function(err, existingUser) {
+        if (existingUser) {
+          var token = createToken(existingUser);
+          return res.send({ token: token, user: existingUser });
+        }
+
+        var user = new User({
+          instagramId: body.user.id,
+          username: body.user.username,
+          fullName: body.user.full_name,
+          picture: body.user.profile_picture,
+          accessToken: body.access_token
+        });
+
+        user.save(function() {
+          var token = createToken(user);
+          res.send({ token: token, user: user });
+        });
+      });
+    }
+  });
+});
+
+	//Service to connect google clientID auth
 	app.post('/auth/google', function(req, res) {
-		console.log("===============================");
+	console.log("===============================");
 	  var accessTokenUrl = 'https://www.googleapis.com/oauth2/v3/token';
 	  var params = {
 	    client_id: req.body.clientId,
@@ -77,35 +164,75 @@ module.exports = function(app){
 	    code: req.body.code,
 	    grant_type: 'authorization_code'
 	  };
-	  console.log(req+"==============================="+res);
-	 // Step 1\. Exchange authorization code for access token.
-	 /*req.post({ url: accessTokenUrl, form: params, json: true }, function(e, r, body) {
-	   // Step 2a. Link user accounts.
-		   if (req.headers.authorization) {
+	 	// Step 1\. Exchange authorization code for access token.
+	  request.post({ url: accessTokenUrl, form: params, json: true }, function(error, response, body) {
 
-		   } else { // Step 2b. Create a new user account or return an existing one.
-		   		User.findOne({ instagramId: body.user.id }, function(err, existingUser) {
-		        if (existingUser) {
-		          var token = createToken(existingUser);
-		          return res.send({ token: token, user: existingUser });
-		        }
+	    // Step 2a. Link user accounts.
+	   /* if (req.headers.authorization) {
+	      console.log(params+"======="+body);
+	      User.findOne({ instagramId: body.user.id }, function(err, existingUser) {
 
-		        var user = new User({
-		          instagramId: body.user.id,
-		          username: body.user.username,
-		          fullName: body.user.full_name,
-		          picture: body.user.profile_picture,
-		          accessToken: body.access_token
-		        });
+	        var token = req.headers.authorization.split(' ')[1];
+	        var payload = jwt.decode(token, config.tokenSecret);
 
-		        user.save(function() {
-		          var token = createToken(user);
-		          res.send({ token: token, user: user });
-		        });
-		      });
-		   }
-		 });*/
-	 });
+	        User.findById(payload.sub, '+password', function(err, localUser) {
+	          if (!localUser) {
+	            return res.status(400).send({ message: 'User not found.' });
+	          }
+
+	          // Merge two accounts.
+	          if (existingUser) {
+
+	            existingUser.email = localUser.email;
+	            existingUser.password = localUser.password;
+
+	            localUser.remove();
+
+	            existingUser.save(function() {
+	              var token = createToken(existingUser);
+	              return res.send({ token: token, user: existingUser });
+	            });
+
+	          } else {
+	            // Link current email account with the Instagram profile information.
+	            localUser.instagramId = body.user.id;
+	            localUser.username = body.user.username;
+	            localUser.fullName = body.user.full_name;
+	            localUser.picture = body.user.profile_picture;
+	            localUser.accessToken = body.access_token;
+
+	            localUser.save(function() {
+	              var token = createToken(localUser);
+	              res.send({ token: token, user: localUser });
+	            });
+
+	          }
+	        });
+	      });
+	    } else {
+	      // Step 2b. Create a new user account or return an existing one.
+	      User.findOne({ instagramId: body.user.id }, function(err, existingUser) {
+	        if (existingUser) {
+	          var token = createToken(existingUser);
+	          return res.send({ token: token, user: existingUser });
+	        }
+
+	        var user = new User({
+	          instagramId: body.user.id,
+	          username: body.user.username,
+	          fullName: body.user.full_name,
+	          picture: body.user.profile_picture,
+	          accessToken: body.access_token
+	        });
+
+	        user.save(function() {
+	          var token = createToken(user);
+	          res.send({ token: token, user: user });
+	        });
+	      });
+	    } */
+	  });
+	});
 	
 	//Restrict unauthorised users from access secure resources
 	function isAuthenticated(req, res, next) {
@@ -140,5 +267,26 @@ module.exports = function(app){
 	  };
 	  return jwt.encode(payload, config.tokenSecret);
 	}
+
+	app.post('/api/upload', function(req, res){
+	    var form = new formidable.IncomingForm(),
+	    files = [],
+	    fields = [];
+	    form.on('field', function(field, value) {
+	        fields.push([field, value]);
+	    })
+	    form.on('file', function(field, file) {
+	        console.log(file.name);
+	        files.push([field, file]);
+	    })
+	    form.on('end', function() {
+	        console.log('-> upload done');
+		    res.writeHead(200, {'content-type': 'text/plain'});
+		    res.write('received fields:\n\n '+util.inspect(fields));
+		    res.write('\n\n');
+		    res.end('received files:\n\n '+util.inspect(files));
+	    });
+	    form.parse(req);
+	});
 
 }

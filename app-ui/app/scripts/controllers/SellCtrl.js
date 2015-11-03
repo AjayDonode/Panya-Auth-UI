@@ -8,7 +8,7 @@
  * Controller of the panyaGalaryApp
  */
 angular.module('panyaGalaryApp')
-  .controller('SellCtrl', function ($scope) {
+  .controller('SellCtrl', function ($scope,$auth) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -16,10 +16,16 @@ angular.module('panyaGalaryApp')
     ];
 
      $scope.isAuthenticated = function() {
-      // check if logged in
+      return $auth.isAuthenticated();
     };
 
     $scope.linkInstagram = function() {
-      // connect email account with instagram
+      $auth.link('instagram')
+        .then(function(response){
+           $window.localStorage.currentUser = JSON.stringify(response.data.user);
+              $rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
+          console.log("currentUser is "+$rootScope.currentUser)
+        });
     };
+
   });

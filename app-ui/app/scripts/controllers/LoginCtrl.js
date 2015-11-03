@@ -16,22 +16,35 @@ angular.module('panyaGalaryApp')
     ];
 
     // this.userObject.isLogin = true;
-
      $scope.isAuthenticated = function() {
-      // check if logged in
+      
     };
 
     $scope.linkInstagram = function() {
       // connect email account with instagram
     };
 
+
+      $scope.instagramLogin = function() {
+        $auth.authenticate('instagram')
+          .then(function(response) {
+            $window.localStorage.currentUser = JSON.stringify(response.data.user);
+            $rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
+          })
+          .catch(function(response) {
+            console.log(response.data);
+          });
+      };
+
      $scope.authenticate = function(provider) {
+      console.log("Calling  "+provider);
       $auth.authenticate(provider)
       	.then(function(response) {
+          console.log("Success "+response);
           $window.localStorage.currentUser = JSON.stringify(response.data.user);
           $rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
           console.log("Success "+response.data);
-          
+          $location.path('/sell');
         })
         .catch(function(response) {
           console.log("Error "+response.data);

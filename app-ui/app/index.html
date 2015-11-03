@@ -12,6 +12,7 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+     <link rel="stylesheet" href="styles/userprofile.css">
     <!-- endbuild -->
   </head>
   <body ng-app="panyaGalaryApp">
@@ -22,10 +23,8 @@
     <!-- Add your site or application content here -->
     <div ng-include="'views/Header/header.html'"></div>
 
-    <div class="container">
-       <div ng-view=""></div>
-    </div>
-
+    <div ng-view=""></div>
+    
     <div ng-include="'views/Header/footer.html'"></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->

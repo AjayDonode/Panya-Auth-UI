@@ -1,6 +1,8 @@
-<div class="container">
 
-  <div ng-if="isAuthenticated() && currentUser.username">
+
+<div class="profile">
+
+  <!--div ng-if="isAuthenticated() && currentUser.username">
     <div class="row">
       <div ng-repeat="photo in photos" class="col-lg-2 col-sm-3 col-xs-4">
         <a href="#/photo/{{photo.id}}">
@@ -29,6 +31,13 @@
         <i class="ion-social-instagram"></i> Sign in with Instagram
       </button>
     </div>
+  </div -->
+  <div class="profile-card">
+  <div class="profile-card__door">
+    <div class="profile-card__front">
+      <img src="https://pbs.twimg.com/profile_images/378800000107983641/e07f88f9eee6a64ab1cc0c69dd1ff314.jpeg" alt="" class="profile-card__avatar">
+      <p>@ajaydonode</p>
+    </div>
   </div>
-
+</div>
 </div>
