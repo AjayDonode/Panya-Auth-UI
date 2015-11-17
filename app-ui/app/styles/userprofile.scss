@@ -44,3 +44,48 @@ $profile-card-height: 200px;
   width: 75px;
   height: 75px;
 }
+
+@media screen and (max-width: 500px) {
+
+  .profile-card {
+    background: "";
+    background-size: cover;
+    margin: 0 px;
+    width: 500px;
+    height: 50px;
+  }
+
+  .profile {
+    min-width: 500px;
+   }
+
+  .profile-card__door {
+  width: $profile-card-width*0.5;
+  left: 0;
+  position: relative;
+  transition: all .5s ease-in-out;
+}
+
+.profile-card__door:hover {
+  box-shadow: inset 500 0 50px black;
+}
+
+.profile-card__front,
+.profile-card__back {
+  text-align: center;
+  width: 500;
+  float: left;
+  color: white;
+  position: relative;
+  text-shadow: 0 1px 0 black;
+  font-size: 0.9em;
+}
+
+.profile-card__avatar {
+  border: 2px solid white;
+  border-radius: 5px;
+  width: 50px;
+  height: 50px;
+}
+
+  }

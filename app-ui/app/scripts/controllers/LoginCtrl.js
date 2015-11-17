@@ -15,6 +15,8 @@ angular.module('panyaGalaryApp')
       'Karma'
     ];
 
+    $rootScope.currentUser = {};
+     $rootScope.currentUser.name = "Guest+";
     // this.userObject.isLogin = true;
      $scope.isAuthenticated = function() {
       
@@ -30,6 +32,7 @@ angular.module('panyaGalaryApp')
           .then(function(response) {
             $window.localStorage.currentUser = JSON.stringify(response.data.user);
             $rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
+            $rootScope.currentUser.name = "Ajay"; //TODO CHange this implimentation
           })
           .catch(function(response) {
             console.log(response.data);

@@ -268,25 +268,6 @@ module.exports = function(app){
 	  return jwt.encode(payload, config.tokenSecret);
 	}
 
-	app.post('/api/upload', function(req, res){
-	    var form = new formidable.IncomingForm(),
-	    files = [],
-	    fields = [];
-	    form.on('field', function(field, value) {
-	        fields.push([field, value]);
-	    })
-	    form.on('file', function(field, file) {
-	        console.log(file.name);
-	        files.push([field, file]);
-	    })
-	    form.on('end', function() {
-	        console.log('-> upload done');
-		    res.writeHead(200, {'content-type': 'text/plain'});
-		    res.write('received fields:\n\n '+util.inspect(fields));
-		    res.write('\n\n');
-		    res.end('received files:\n\n '+util.inspect(files));
-	    });
-	    form.parse(req);
-	});
+	
 
 }

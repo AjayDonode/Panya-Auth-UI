@@ -22,19 +22,7 @@ angular
   .value('userObject', '')
 
   .config(function ($routeProvider,$authProvider) {
-    
-   
 
-    // $routeProvider
-    // .state('app', {
-    //   url: '',
-    //   views: {
-    //     'header': {
-    //           templateUrl: 'views/Header/header.html',
-    //           controller: 'HeaderCtrl'
-    //     }
-    //   }
-    // });
     //route provider 
     $routeProvider
       .when('/', {

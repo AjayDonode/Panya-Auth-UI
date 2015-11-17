@@ -52,7 +52,6 @@ a:hover {
 /* Supporting marketing content */
 .marketing {
   margin: 40px 0;
-
   p + h4 {
     margin-top: 28px;
   }
@@ -62,6 +61,7 @@ a:hover {
 @media screen and (min-width: 768px) {
   .container {
     max-width: 730px;
+
   }
 
   /* Remove the padding we set earlier */
@@ -91,6 +91,7 @@ a:hover {
   border: 0;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
   border-radius: 0px;
+  margin-bottom: 3px;
 }
 
 .navbar-header {
