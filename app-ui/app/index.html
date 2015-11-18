@@ -24,7 +24,7 @@
     <div ng-include="'views/Header/header.html'"></div>
 
     <div ng-view=""></div>
-    
+     
     <div ng-include="'views/Header/footer.html'"></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -56,11 +56,12 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/MainCtrl.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/SellCtrl.js"></script>
         <script src="scripts/controllers/LoginCtrl.js"></script>
         <script src="scripts/directives/serverError.js"></script>
+        <script src="scripts/services/CategoryService.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -17,6 +17,7 @@ var corsOptions = {
 };
 
 User = require('./scripts/model').User;
+Category = require('./scripts/model').Category;
 
 app.set('port', process.env.PORT || 3000);
 app.use(cors(corsOptions));
@@ -26,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //app.use(express.bodyParser({uploadDir:__dirname + '/public/uploads'}));
 
 require('./scripts/api')(app);
+require('./scripts/CategoryApi')(app);
 
 app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));

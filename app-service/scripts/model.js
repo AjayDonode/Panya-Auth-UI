@@ -12,7 +12,15 @@ var User = mongoose.model('User', new Schema({
   accessToken: String
 }));
 
+var Category = mongoose.model('Category', new Schema({
+  id: { type: String, index: true },
+  name: { type: String, unique: true},
+  description: { type: String},
+  createdOn: { type: Date }
+}));
+
 module.exports = {
-  User: User
+  User: User,
+  Category: Category
 }
 mongoose.connect(config.db);

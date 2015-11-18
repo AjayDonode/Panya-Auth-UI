@@ -9,12 +9,7 @@
  */
 angular.module('panyaGalaryApp')
   .controller('SellCtrl', function ($scope,$auth) {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-
+  
      $scope.isAuthenticated = function() {
       return $auth.isAuthenticated();
     };
