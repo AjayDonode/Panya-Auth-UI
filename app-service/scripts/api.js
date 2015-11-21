@@ -45,14 +45,19 @@ module.exports = function(app){
 	  
 	  User.findOne({ email: req.body.email }, function(err, existingUser) {
 	    if (existingUser) {
-	      return res.status(409).send({ message: 'Email is already taken.' });
+	      return res.status(409).send({ message: 'This EmailId is already taken.' });
 	    }
 
 	    var user = new User({
-	      email: req.body.email,
-	      password: req.body.password
+	    	name: req.body.name,
+        	lastname: req.body.lastname,
+	        email: req.body.email,
+	        password: req.body.password,
+            age: req.body.age,
+            sex: req.body.sex
 	    });
 
+	    console.log(req.body.sex+ " Request Object "+User.sex);
 	    bcrypt.genSalt(10, function(err, salt) {
 	      bcrypt.hash(user.password, salt, function(err, hash) {
 	        user.password = hash;

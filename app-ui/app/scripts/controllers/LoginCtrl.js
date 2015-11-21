@@ -15,9 +15,9 @@ angular.module('panyaGalaryApp')
       'Karma'
     ];
 
-    $rootScope.currentUser = {};
+     $rootScope.currentUser = {};
      $rootScope.currentUser.name = "Guest+";
-    // this.userObject.isLogin = true;
+     //userObject.isLogin = true;
      $scope.isAuthenticated = function() {
       
     };
@@ -60,6 +60,7 @@ angular.module('panyaGalaryApp')
           $window.localStorage.currentUser = JSON.stringify(response.data.user);
           $rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
           console.log("Current user is "+$rootScope.currentUser.email);
+          $rootScope.currentUser.name = "Ajay";
           $location.path('/sell');
         })
         .catch(function(response) {
@@ -74,10 +75,14 @@ angular.module('panyaGalaryApp')
     //Signup Refactor to move in Signup controller
       $scope.signup = function() {
       var user = {
+        name: $scope.name,
+        lastname: $scope.lastname,
         email: $scope.email,
-        password: $scope.password
+        password: $scope.password,
+        age: $scope.age,
+        sex: $scope.sex
       };
-
+       console.log($scope.sex+ " <--->" +user.sex);
       // Satellizer
       $auth.signup(user)
         .catch(function(response) {
