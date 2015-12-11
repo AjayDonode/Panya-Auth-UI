@@ -8,16 +8,13 @@
  * Controller of the panyaGalaryApp
  */
 angular.module('panyaGalaryApp')
-  .controller('LoginCtrl', function ($scope,$auth,$window,$rootScope,$location,userObject) {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-
-     $rootScope.currentUser = {};
-     $rootScope.currentUser.name = "Guest+";
-     //userObject.isLogin = true;
+  .controller('LoginCtrl', function ($scope,$auth,$window,$rootScope,$location) {
+    
+    if($rootScope.currentUser==undefined){
+       $rootScope.currentUser = {};
+       $rootScope.currentUser.name = "Guest+";
+       $rootScope.currentUser.isLogin = false;
+     }
      $scope.isAuthenticated = function() {
       
     };
@@ -32,7 +29,6 @@ angular.module('panyaGalaryApp')
           .then(function(response) {
             $window.localStorage.currentUser = JSON.stringify(response.data.user);
             $rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
-            $rootScope.currentUser.name = "Ajay"; //TODO CHange this implimentation
           })
           .catch(function(response) {
             console.log(response.data);
@@ -60,7 +56,7 @@ angular.module('panyaGalaryApp')
           $window.localStorage.currentUser = JSON.stringify(response.data.user);
           $rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
           console.log("Current user is "+$rootScope.currentUser.email);
-          $rootScope.currentUser.name = "Ajay";
+          $rootScope.currentUser.isLogin = true;
           $location.path('/sell');
         })
         .catch(function(response) {
@@ -82,9 +78,15 @@ angular.module('panyaGalaryApp')
         age: $scope.age,
         sex: $scope.sex
       };
-       console.log($scope.sex+ " <--->" +user.sex);
+      
       // Satellizer
       $auth.signup(user)
+      .then(function(response) {
+          $window.localStorage.currentUser = JSON.stringify(response.data.user);
+          $rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
+          $rootScope.currentUser.isLogin = true;
+          $location.path('/sell');
+        })
         .catch(function(response) {
           console.log(response.data);
         });

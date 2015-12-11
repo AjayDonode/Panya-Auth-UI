@@ -37,21 +37,22 @@
 
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{currentUser.name}}<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{currentUser.name}} {{currentUser.lastname}}<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">Profile</a></li>
             <li><a href="#">Settings</a></li>
             <li><a href="#">Invite Friends</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Add Galary</a></li>
+            <li><a href="#/profile"> + Post</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">Help</a></li>
             <li><a href="#">About Us</a></li>
             <li><a href="#">Report problem</a></li>
           </ul>
         </li>
-        <li><a href="#/login" ng-hide="{{userObject.isLogin}}">Login</a></li>
-        <li><a ng-click="logout()" ng-show="{{userObject.isLogin}}" href="">Logout</a></li>
+        <li>{{currentUser.isLogin}}</li>
+        <li><a href="#/login" ng-hide="{{currentUser.isLogin}}">Login</a></li>
+        <li><a href="" ng-click="logout()" ng-show="{{currentUser.isLogin}}" >Logout</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div>

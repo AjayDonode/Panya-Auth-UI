@@ -1,11 +1,7 @@
 module.exports = function(app){
 	'use strict';
 	/*GET users Listing*/
-	console.log('==================================');
-	console.log('========: Services are Up :=======');
-	console.log('==================================');
-	
-
+	console.log('Service : categories - UP');
 	app.put('/api/categories', function(req,res){
 	var now = new Date();
 	var category = new Category({					

@@ -7,10 +7,7 @@ module.exports = function(app){
 	var request = require('request');
 
 	/*GET users Listing*/
-	console.log('==================================');
-	console.log('========: Services are Up :=======');
-	console.log('==================================');
-
+	console.log('Service : apis - UP');
 	//test Service 
 	app.get('/api/test', function(req,res){
   		return res.send("<h4> -:: Ping Ping ::- <br> Its working </h4>");

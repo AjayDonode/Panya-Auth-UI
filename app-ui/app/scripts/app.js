@@ -48,12 +48,20 @@ angular
         templateUrl: 'views/signup.html',
         controller: 'LoginCtrl',
         controllerAs: 'loginctrl'
+      }).when('/profile', {
+        templateUrl: 'views/profile.html',
+        controller: 'ProfileCtrl',
+        controllerAs: 'profilectrl'
       })
+
+      
 
       .otherwise({
         redirectTo: '/'
       });
       
+  
+
     $authProvider.loginUrl = 'http://localhost:3000/auth/login';
     $authProvider.signupUrl = 'http://localhost:3000/auth/signup';
     $authProvider.oauth2({
