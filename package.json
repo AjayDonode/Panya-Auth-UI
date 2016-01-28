@@ -1,0 +1,12 @@
+{
+  "name": "Panya-Galary",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {},
+  "scripts": {
+    "start": "node app-service/server.js"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5"
+  }
+}

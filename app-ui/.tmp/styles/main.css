@@ -8705,66 +8705,53 @@ a:hover {
   color: #1c5380;
 }
 
-/* Custom page header */
-/* line 27, ../../app/styles/main.scss */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 10px;
-  /* Make the masthead heading the same height as the navigation */
-}
-/* line 32, ../../app/styles/main.scss */
-.header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 40px;
-  padding-bottom: 19px;
-}
-
 /* Custom page footer */
-/* line 41, ../../app/styles/main.scss */
+/* line 29, ../../app/styles/main.scss */
 .footer {
+  position: absolute;
+  width: 100%;
   padding-top: 19px;
   color: #777;
+  background-color: #fff;
   border-top: 1px solid #e5e5e5;
   text-align: center;
 }
 
-/* line 49, ../../app/styles/main.scss */
+/* line 40, ../../app/styles/main.scss */
 .container-narrow > hr {
   margin: 30px 0;
 }
 
 /* Main marketing message and sign up button */
-/* line 54, ../../app/styles/main.scss */
+/* line 45, ../../app/styles/main.scss */
 .jumbotron {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
-}
-/* line 58, ../../app/styles/main.scss */
-.jumbotron .btn {
-  font-size: 21px;
-  padding: 14px 24px;
+  /*.btn {
+    font-size: 10px;
+    padding: 14px 24px;
+  } */
 }
 
 /* Supporting marketing content */
-/* line 65, ../../app/styles/main.scss */
+/* line 56, ../../app/styles/main.scss */
 .marketing {
   margin: 40px 0;
 }
-/* line 68, ../../app/styles/main.scss */
+/* line 58, ../../app/styles/main.scss */
 .marketing p + h4 {
   margin-top: 28px;
 }
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-  /* line 75, ../../app/styles/main.scss */
+  /* line 65, ../../app/styles/main.scss */
   .container {
     max-width: 730px;
   }
 
   /* Remove the padding we set earlier */
-  /* line 80, ../../app/styles/main.scss */
+  /* line 71, ../../app/styles/main.scss */
   .header,
   .marketing,
   .footer {
@@ -8773,15 +8760,26 @@ a:hover {
   }
 
   /* Space out the masthead */
-  /* line 87, ../../app/styles/main.scss */
+  /* line 78, ../../app/styles/main.scss */
   .header {
-    margin-bottom: 30px;
+    margin-bottom: 1px;
   }
 
   /* Remove the bottom border on the jumbotron for visual effect */
-  /* line 91, ../../app/styles/main.scss */
+  /* line 82, ../../app/styles/main.scss */
   .jumbotron {
     border-bottom: 0;
+    height: 100%;
+  }
+
+  /* line 86, ../../app/styles/main.scss */
+  .main {
+    border-bottom: 0;
+    height: 100%;
+    background: url("/images/app-backgrounds.jpg") top right no-repeat;
+    background-size: cover;
+    padding-left: 30px;
+    padding-right: 30px;
   }
 
   /* line 97, ../../app/styles/main.scss */
@@ -8794,15 +8792,17 @@ a:hover {
     min-height: 50px;
     border: 0;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    border-radius: 0px;
+    margin-bottom: 3px;
   }
 
-  /* line 107, ../../app/styles/main.scss */
+  /* line 109, ../../app/styles/main.scss */
   .navbar-header {
     float: left;
-    padding-left: 15px;
+    padding-left: 30px;
   }
 
-  /* line 112, ../../app/styles/main.scss */
+  /* line 114, ../../app/styles/main.scss */
   .navbar-brand {
     height: 50px;
     padding: 0 15px;
@@ -8810,36 +8810,36 @@ a:hover {
     line-height: 50px;
   }
 
-  /* line 119, ../../app/styles/main.scss */
+  /* line 121, ../../app/styles/main.scss */
   .navbar-nav {
     float: left;
     margin: 0;
   }
 
-  /* line 124, ../../app/styles/main.scss */
+  /* line 126, ../../app/styles/main.scss */
   .navbar-nav > li {
     float: left;
   }
 
-  /* line 128, ../../app/styles/main.scss */
+  /* line 130, ../../app/styles/main.scss */
   .navbar-nav > li > a {
     padding: 0 15px;
     line-height: 50px;
   }
 
-  /* line 133, ../../app/styles/main.scss */
+  /* line 135, ../../app/styles/main.scss */
   .navbar-text {
     margin-top: 10px;
     margin-bottom: 10px;
   }
 
-  /* line 138, ../../app/styles/main.scss */
+  /* line 140, ../../app/styles/main.scss */
   .center-form {
-    width: 315px;
+    width: 500px;
     margin: 10% auto;
   }
 
-  /* line 143, ../../app/styles/main.scss */
+  /* line 145, ../../app/styles/main.scss */
   .signup-or-separator {
     position: relative;
     height: 29px;
@@ -8848,14 +8848,14 @@ a:hover {
     background: none;
   }
 
-  /* line 151, ../../app/styles/main.scss */
+  /* line 153, ../../app/styles/main.scss */
   .signup-or-separator hr {
     width: 90%;
     margin: -16px auto 10px auto;
     border-top: 1px solid #dce0e0;
   }
 
-  /* line 157, ../../app/styles/main.scss */
+  /* line 159, ../../app/styles/main.scss */
   .signup-or-separator .text {
     display: inline-block;
     padding: 8px;
@@ -8863,7 +8863,7 @@ a:hover {
     background-color: #fff;
   }
 
-  /* line 164, ../../app/styles/main.scss */
+  /* line 166, ../../app/styles/main.scss */
   .has-feedback .form-control-feedback {
     top: 0;
     left: 0;
@@ -8873,61 +8873,226 @@ a:hover {
     color: #555;
   }
 
-  /* line 173, ../../app/styles/main.scss */
+  /* line 175, ../../app/styles/main.scss */
   [class^='ion-'] {
     font-size: 1.2em;
   }
 
-  /* line 177, ../../app/styles/main.scss */
+  /* line 179, ../../app/styles/main.scss */
   .has-feedback .form-control {
     padding-left: 42px;
   }
 
-  /* line 181, ../../app/styles/main.scss */
+  /* line 183, ../../app/styles/main.scss */
   .btn-instagram {
     color: #fff;
     background-color: #517fa4;
     border: 1px solid #456c8c;
   }
 
-  /* line 187, ../../app/styles/main.scss */
+  /* line 189, ../../app/styles/main.scss */
   .btn-instagram:hover,
   .btn-instagram:focus {
     color: #fff;
     background-color: #303030;
   }
 
-  /* line 193, ../../app/styles/main.scss */
+  /* line 195, ../../app/styles/main.scss */
   .media-object {
     display: inline-block;
     width: 32px;
     height: 32px;
   }
 
-  /* line 199, ../../app/styles/main.scss */
+  /* line 201, ../../app/styles/main.scss */
   .media-heading {
     display: block;
     margin: 0;
     color: #3f729b;
   }
 
-  /* line 205, ../../app/styles/main.scss */
+  /* line 207, ../../app/styles/main.scss */
   .media-heading:hover {
     color: #1c5380;
   }
 
-  /* line 209, ../../app/styles/main.scss */
+  /* line 211, ../../app/styles/main.scss */
   .soften {
     height: 1px;
     background-image: -ms-linear-gradient(left, transparent, rgba(0, 0, 0, 0.1), transparent);
     border: 0;
   }
 
-  /* line 217, ../../app/styles/main.scss */
+  /* line 219, ../../app/styles/main.scss */
   .thumbnail {
     border: 0;
     border-radius: 0;
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04), 0 1px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  /* line 225, ../../app/styles/main.scss */
+  .dashboard {
+    float: left;
+    width: 290px;
+  }
+
+  /* line 229, ../../app/styles/main.scss */
+  .DashboardProfileCard {
+    border: 1px solid #e1e8ed;
+    background: #FFF;
+    border-radius: 6px;
+  }
+
+  /* line 234, ../../app/styles/main.scss */
+  .module {
+    background-clip: padding-box;
+    border: 0;
+    border-radius: 6px;
+    line-height: 16px;
+    position: relative;
+    margin-bottom: 10px;
+  }
+
+  /* line 243, ../../app/styles/main.scss */
+  .DashboardProfileCard-bg {
+    background-image: url(https://pbs.twimg.com/profile_banners/1330944336/1401769745/600x200);
+  }
+
+  /* line 246, ../../app/styles/main.scss */
+  .u-bgUserColor, .u-bgUserColorHover:hover, .u-bgUserColorHover:focus {
+    background-color: #FFCC4D !important;
+  }
+
+  /* line 249, ../../app/styles/main.scss */
+  .u-block {
+    display: block !important;
+  }
+
+  /* line 252, ../../app/styles/main.scss */
+  .DashboardProfileCard-bg {
+    background-size: 100%;
+    border-bottom: 1px solid #e1e8ed;
+    height: 95px;
+    border-radius: 4px 4px 0 0;
+    background-position: 0 50%;
+    width: 100%;
+    padding: 0 1px;
+    margin-left: -1px;
+    margin-top: -1px;
+  }
+
+  /* line 264, ../../app/styles/main.scss */
+  .DashboardProfileCard-content {
+    color: #292f33;
+    display: block;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    height: 98px;
+    line-height: 16px;
+    width: 288px;
+  }
+
+  /* line 272, ../../app/styles/main.scss */
+  .DashboardProfileCard-avatarLink {
+    background-color: #fff;
+    border-radius: 6px;
+    margin: -30px 0 0 8px;
+    padding: 1px;
+    vertical-align: bottom;
+  }
+
+  /* line 279, ../../app/styles/main.scss */
+  .u-inlineBlock {
+    display: inline-block !important;
+    max-width: 100%;
+  }
+
+  /* line 284, ../../app/styles/main.scss */
+  .DashboardProfileCard-userFields {
+    position: absolute;
+    top: 103px;
+    left: 90px;
+    width: 185px;
+  }
+
+  /* line 290, ../../app/styles/main.scss */
+  .ProfileCardStats {
+    margin-left: 11px;
+    padding: 10px 0;
+  }
+
+  /* line 295, ../../app/styles/main.scss */
+  .Arrange--equal {
+    table-layout: fixed;
+  }
+
+  /* line 299, ../../app/styles/main.scss */
+  equal > .Arrange-sizeFill, .Arrange--equal > .Arrange-sizeFit {
+    width: 1%;
+  }
+
+  /* line 303, ../../app/styles/main.scss */
+  .Arrange {
+    box-sizing: border-box;
+    display: table;
+    margin: 0;
+    min-width: 100%;
+    padding: 0;
+    table-layout: auto;
+  }
+
+  /* line 312, ../../app/styles/main.scss */
+  ol, ul {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+  }
+
+  /* line 318, ../../app/styles/main.scss */
+  .u-textUserColor, .u-textUserColorHover:hover, .u-textUserColorHover:focus {
+    color: #FFCC4D !important;
+  }
+
+  /* line 321, ../../app/styles/main.scss */
+  .u-linkClean, .u-linkClean:hover, .u-linkClean:focus, .u-linkClean:active {
+    text-decoration: none !important;
+  }
+
+  /* line 324, ../../app/styles/main.scss */
+  .u-block {
+    display: block !important;
+  }
+
+  /* make sidebar nav vertical */
+}
+@media screen and (min-width: 768px) and (min-width: 768px) {
+  /* line 331, ../../app/styles/main.scss */
+  .sidebar-nav .navbar .navbar-collapse {
+    padding: 0;
+    max-height: none;
+  }
+
+  /* line 335, ../../app/styles/main.scss */
+  .sidebar-nav .navbar ul {
+    float: none;
+  }
+
+  /* line 338, ../../app/styles/main.scss */
+  .sidebar-nav .navbar ul:not {
+    display: block;
+  }
+
+  /* line 341, ../../app/styles/main.scss */
+  .sidebar-nav .navbar li {
+    float: none;
+    display: block;
+  }
+
+  /* line 345, ../../app/styles/main.scss */
+  .sidebar-nav .navbar li a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    display: block;
   }
 }
 
