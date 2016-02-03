@@ -35,7 +35,6 @@
       <div class="profile-card__front">
         <img src="https://pbs.twimg.com/profile_images/378800000107983641/e07f88f9eee6a64ab1cc0c69dd1ff314.jpeg" alt=""
              class="profile-card__avatar">
-
         <p>@ajaydonode</p>
       </div>
     </div>
@@ -93,7 +92,6 @@
           <h3 class="PromptbirdPrompt-title">No images in your galary, Create one.</h3>
           <input id="photos" type="file" class="btn" ng-file-select="onFileSelect($files)" multiple>
           <div class="row">
-           {files.length}
             <div ng-repeat="file in files" class="col-md-4">
               <div
                 style="width: 200px; height: 200px; border: thick solid #666666; overflow: hidden; position: relative;">
@@ -114,17 +112,10 @@
           <button type="button" class="btn btn-success" tabindex="-1">
             <span class="Icon Icon--close Icon--smallest">
               <span class="visuallyhidden">
-                Upload
+                Publish
               </span>
             </span>
           </button>
-          <p class="PromptbirdPrompt-explanation">Use Twitter Ads to target people interested in your business.</p>
-
-          <div class="PromptbirdPrompt-action">
-            <a href="" class="btn primary-btn">
-              Start a campaign
-            </a>
-          </div>
         </div>
       </div>
     </div>

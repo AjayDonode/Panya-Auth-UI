@@ -1,4 +1,4 @@
- angular.module('panyaGalaryApp').factory('auth', function(){
+ angular.module('panyaGalaryApp').factory('auth1', function(){
 var user;
 
 return{

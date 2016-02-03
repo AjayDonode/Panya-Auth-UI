@@ -30,8 +30,6 @@ angular.module('panyaGalaryApp')
             $scope.upload[index].abort();
             $scope.upload[index] = null;
         };
-
-    console.log(fileReader)
         
         $scope.getFile = function () {
             $scope.progress = 0;

@@ -5,7 +5,7 @@
     Open Marketplace for Everyone
   </p>
   
-<div>Add Catogery : 
+<div>
 	<form class="form-horizontal" role="form">
 		<div class="form-group">
 		    <label for="categoryName" class="col-sm-4 control-label">Category</label>
@@ -17,8 +17,6 @@
 	        			</button>
   					</span>
 			    </div>
-			    
-			    
 		</div>
 	</form>
 </div> <!--Catagory Block -->
@@ -30,9 +28,9 @@
   	 <a class="close" ng-click="removeCategory({{category}})" href="">×</a>
       <img src="images/yeoman.png" alt="{{category.name}}">
       <div class="caption">
-        <h3>Thumbnail label</h3>
+        <h3>{{category.name}}</h3>
         <p>{{category.description}}</p>
-        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        
       </div>
     </div>
  		 

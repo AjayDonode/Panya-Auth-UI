@@ -14,6 +14,7 @@ angular.module('panyaGalaryApp')
       return $auth.isAuthenticated();
     };
 
+
     $scope.linkInstagram = function() {
       $auth.link('instagram')
         .then(function(response){

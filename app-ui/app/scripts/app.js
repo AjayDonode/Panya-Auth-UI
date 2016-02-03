@@ -23,6 +23,10 @@ angular
 
   .config(function ($routeProvider,$authProvider) {
 
+    // $stateProvider.state('header',{
+    //   templateUrl: '',
+    //   controller: '
+    // })
     //route provider 
     $routeProvider
       .when('/', {
@@ -38,7 +42,10 @@ angular
        .when('/sell', {
         templateUrl: 'views/sell.html',
         controller: 'SellCtrl',
-        controllerAs: 'sellcontroller'
+        controllerAs: 'sellcontroller',
+        resolve: {
+          loginRequired: loginRequired
+        }
       })
         .when('/login', {
         templateUrl: 'views/login.html',
@@ -52,17 +59,17 @@ angular
       }).when('/profile', {
         templateUrl: 'views/profile.html',
         controller: 'ProfileCtrl',
-        controllerAs: 'profilectrl'
+        controllerAs: 'profilectrl',
+        resolve: {
+          loginRequired: loginRequired
+        }
       })
-
-      
-
       .otherwise({
         redirectTo: '/'
       });
       
   
-
+     <!-- Auth Provider -->  
     $authProvider.loginUrl = 'http://localhost:3000/auth/login';
     $authProvider.signupUrl = 'http://localhost:3000/auth/signup';
     $authProvider.oauth2({
@@ -92,18 +99,15 @@ angular
       popupOptions: { width: 452, height: 633 }
     });
       //gsKMNjrx78bPOkDjJC-9_CjB : Client Secret for google
-  
+    function loginRequired($q, $location, $auth) {
+      var deferred = $q.defer();
+      if ($auth.isAuthenticated()) {
+        deferred.resolve();
+      } else {
+        $location.path('/login');
+      }
+      return deferred.promise;
+    }
   
 
-  }).directive("ngFileSelect",function(){
-  return {
-    link: function($scope,el){
-      el.bind("change", function(e){
-        for (var i = 0; i < e.target.files.length; i++) {
-        $scope.file = (e.srcElement || e.target).files[i];
-        $scope.getFile();
-      }
-      }) 
-    } 
-  }  
-});
+  });

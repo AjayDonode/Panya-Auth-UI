@@ -8803,6 +8803,11 @@ a:hover {
   }
 
   /* line 114, ../../app/styles/main.scss */
+  .center {
+    float: auto;
+  }
+
+  /* line 118, ../../app/styles/main.scss */
   .navbar-brand {
     height: 50px;
     padding: 0 15px;
@@ -8810,36 +8815,36 @@ a:hover {
     line-height: 50px;
   }
 
-  /* line 121, ../../app/styles/main.scss */
+  /* line 125, ../../app/styles/main.scss */
   .navbar-nav {
     float: left;
     margin: 0;
   }
 
-  /* line 126, ../../app/styles/main.scss */
+  /* line 130, ../../app/styles/main.scss */
   .navbar-nav > li {
     float: left;
   }
 
-  /* line 130, ../../app/styles/main.scss */
+  /* line 134, ../../app/styles/main.scss */
   .navbar-nav > li > a {
     padding: 0 15px;
     line-height: 50px;
   }
 
-  /* line 135, ../../app/styles/main.scss */
+  /* line 139, ../../app/styles/main.scss */
   .navbar-text {
     margin-top: 10px;
     margin-bottom: 10px;
   }
 
-  /* line 140, ../../app/styles/main.scss */
+  /* line 144, ../../app/styles/main.scss */
   .center-form {
     width: 500px;
     margin: 10% auto;
   }
 
-  /* line 145, ../../app/styles/main.scss */
+  /* line 149, ../../app/styles/main.scss */
   .signup-or-separator {
     position: relative;
     height: 29px;
@@ -8848,14 +8853,14 @@ a:hover {
     background: none;
   }
 
-  /* line 153, ../../app/styles/main.scss */
+  /* line 157, ../../app/styles/main.scss */
   .signup-or-separator hr {
     width: 90%;
     margin: -16px auto 10px auto;
     border-top: 1px solid #dce0e0;
   }
 
-  /* line 159, ../../app/styles/main.scss */
+  /* line 163, ../../app/styles/main.scss */
   .signup-or-separator .text {
     display: inline-block;
     padding: 8px;
@@ -8863,7 +8868,7 @@ a:hover {
     background-color: #fff;
   }
 
-  /* line 166, ../../app/styles/main.scss */
+  /* line 170, ../../app/styles/main.scss */
   .has-feedback .form-control-feedback {
     top: 0;
     left: 0;
@@ -8873,77 +8878,77 @@ a:hover {
     color: #555;
   }
 
-  /* line 175, ../../app/styles/main.scss */
+  /* line 179, ../../app/styles/main.scss */
   [class^='ion-'] {
     font-size: 1.2em;
   }
 
-  /* line 179, ../../app/styles/main.scss */
+  /* line 183, ../../app/styles/main.scss */
   .has-feedback .form-control {
     padding-left: 42px;
   }
 
-  /* line 183, ../../app/styles/main.scss */
+  /* line 187, ../../app/styles/main.scss */
   .btn-instagram {
     color: #fff;
     background-color: #517fa4;
     border: 1px solid #456c8c;
   }
 
-  /* line 189, ../../app/styles/main.scss */
+  /* line 193, ../../app/styles/main.scss */
   .btn-instagram:hover,
   .btn-instagram:focus {
     color: #fff;
     background-color: #303030;
   }
 
-  /* line 195, ../../app/styles/main.scss */
+  /* line 199, ../../app/styles/main.scss */
   .media-object {
     display: inline-block;
     width: 32px;
     height: 32px;
   }
 
-  /* line 201, ../../app/styles/main.scss */
+  /* line 205, ../../app/styles/main.scss */
   .media-heading {
     display: block;
     margin: 0;
     color: #3f729b;
   }
 
-  /* line 207, ../../app/styles/main.scss */
+  /* line 211, ../../app/styles/main.scss */
   .media-heading:hover {
     color: #1c5380;
   }
 
-  /* line 211, ../../app/styles/main.scss */
+  /* line 215, ../../app/styles/main.scss */
   .soften {
     height: 1px;
     background-image: -ms-linear-gradient(left, transparent, rgba(0, 0, 0, 0.1), transparent);
     border: 0;
   }
 
-  /* line 219, ../../app/styles/main.scss */
+  /* line 223, ../../app/styles/main.scss */
   .thumbnail {
     border: 0;
     border-radius: 0;
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04), 0 1px 5px rgba(0, 0, 0, 0.1);
   }
 
-  /* line 225, ../../app/styles/main.scss */
+  /* line 229, ../../app/styles/main.scss */
   .dashboard {
     float: left;
     width: 290px;
   }
 
-  /* line 229, ../../app/styles/main.scss */
+  /* line 233, ../../app/styles/main.scss */
   .DashboardProfileCard {
     border: 1px solid #e1e8ed;
     background: #FFF;
     border-radius: 6px;
   }
 
-  /* line 234, ../../app/styles/main.scss */
+  /* line 238, ../../app/styles/main.scss */
   .module {
     background-clip: padding-box;
     border: 0;
@@ -8953,22 +8958,22 @@ a:hover {
     margin-bottom: 10px;
   }
 
-  /* line 243, ../../app/styles/main.scss */
+  /* line 247, ../../app/styles/main.scss */
   .DashboardProfileCard-bg {
     background-image: url(https://pbs.twimg.com/profile_banners/1330944336/1401769745/600x200);
   }
 
-  /* line 246, ../../app/styles/main.scss */
+  /* line 250, ../../app/styles/main.scss */
   .u-bgUserColor, .u-bgUserColorHover:hover, .u-bgUserColorHover:focus {
     background-color: #FFCC4D !important;
   }
 
-  /* line 249, ../../app/styles/main.scss */
+  /* line 253, ../../app/styles/main.scss */
   .u-block {
     display: block !important;
   }
 
-  /* line 252, ../../app/styles/main.scss */
+  /* line 256, ../../app/styles/main.scss */
   .DashboardProfileCard-bg {
     background-size: 100%;
     border-bottom: 1px solid #e1e8ed;
@@ -8981,7 +8986,7 @@ a:hover {
     margin-top: -1px;
   }
 
-  /* line 264, ../../app/styles/main.scss */
+  /* line 268, ../../app/styles/main.scss */
   .DashboardProfileCard-content {
     color: #292f33;
     display: block;
@@ -8992,7 +8997,7 @@ a:hover {
     width: 288px;
   }
 
-  /* line 272, ../../app/styles/main.scss */
+  /* line 276, ../../app/styles/main.scss */
   .DashboardProfileCard-avatarLink {
     background-color: #fff;
     border-radius: 6px;
@@ -9001,13 +9006,13 @@ a:hover {
     vertical-align: bottom;
   }
 
-  /* line 279, ../../app/styles/main.scss */
+  /* line 283, ../../app/styles/main.scss */
   .u-inlineBlock {
     display: inline-block !important;
     max-width: 100%;
   }
 
-  /* line 284, ../../app/styles/main.scss */
+  /* line 288, ../../app/styles/main.scss */
   .DashboardProfileCard-userFields {
     position: absolute;
     top: 103px;
@@ -9015,23 +9020,23 @@ a:hover {
     width: 185px;
   }
 
-  /* line 290, ../../app/styles/main.scss */
+  /* line 294, ../../app/styles/main.scss */
   .ProfileCardStats {
     margin-left: 11px;
     padding: 10px 0;
   }
 
-  /* line 295, ../../app/styles/main.scss */
+  /* line 299, ../../app/styles/main.scss */
   .Arrange--equal {
     table-layout: fixed;
   }
 
-  /* line 299, ../../app/styles/main.scss */
+  /* line 303, ../../app/styles/main.scss */
   equal > .Arrange-sizeFill, .Arrange--equal > .Arrange-sizeFit {
     width: 1%;
   }
 
-  /* line 303, ../../app/styles/main.scss */
+  /* line 307, ../../app/styles/main.scss */
   .Arrange {
     box-sizing: border-box;
     display: table;
@@ -9041,24 +9046,24 @@ a:hover {
     table-layout: auto;
   }
 
-  /* line 312, ../../app/styles/main.scss */
+  /* line 316, ../../app/styles/main.scss */
   ol, ul {
     margin: 0;
     list-style: none;
     padding: 0;
   }
 
-  /* line 318, ../../app/styles/main.scss */
+  /* line 322, ../../app/styles/main.scss */
   .u-textUserColor, .u-textUserColorHover:hover, .u-textUserColorHover:focus {
     color: #FFCC4D !important;
   }
 
-  /* line 321, ../../app/styles/main.scss */
+  /* line 325, ../../app/styles/main.scss */
   .u-linkClean, .u-linkClean:hover, .u-linkClean:focus, .u-linkClean:active {
     text-decoration: none !important;
   }
 
-  /* line 324, ../../app/styles/main.scss */
+  /* line 328, ../../app/styles/main.scss */
   .u-block {
     display: block !important;
   }
@@ -9066,34 +9071,33 @@ a:hover {
   /* make sidebar nav vertical */
 }
 @media screen and (min-width: 768px) and (min-width: 768px) {
-  /* line 331, ../../app/styles/main.scss */
+  /* line 335, ../../app/styles/main.scss */
   .sidebar-nav .navbar .navbar-collapse {
     padding: 0;
     max-height: none;
   }
 
-  /* line 335, ../../app/styles/main.scss */
+  /* line 339, ../../app/styles/main.scss */
   .sidebar-nav .navbar ul {
     float: none;
   }
 
-  /* line 338, ../../app/styles/main.scss */
+  /* line 342, ../../app/styles/main.scss */
   .sidebar-nav .navbar ul:not {
     display: block;
   }
 
-  /* line 341, ../../app/styles/main.scss */
+  /* line 345, ../../app/styles/main.scss */
   .sidebar-nav .navbar li {
     float: none;
     display: block;
   }
 
-  /* line 345, ../../app/styles/main.scss */
+  /* line 349, ../../app/styles/main.scss */
   .sidebar-nav .navbar li a {
     padding-top: 1px;
     padding-bottom: 1px;
     display: block;
   }
 }
-
 /*# sourceMappingURL=main.css.map */

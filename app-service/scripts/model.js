@@ -8,7 +8,8 @@ var User = mongoose.model('User', new Schema({
   email: { type: String, unique: true, lowercase: true },
   password: { type: String, select: false },
   age: { type: Number },
-  sex: { type: String }
+  sex: { type: String },
+  role: { type: Number }
 }));
 
 var Category = mongoose.model('Category', new Schema({

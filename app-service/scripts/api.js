@@ -31,7 +31,6 @@ module.exports = function(app){
 
 			      user = user.toObject();
 			      delete user.password;
-
 			      var token = createToken(user);
 			      res.send({ token: token, user: user });
 			    });
@@ -51,7 +50,8 @@ module.exports = function(app){
 	        email: req.body.email,
 	        password: req.body.password,
             age: req.body.age,
-            sex: req.body.sex
+            sex: req.body.sex,
+            role: req.body.role
 	    });
 
 	    console.log(req.body.sex+ " Request Object "+User.sex);
@@ -157,7 +157,7 @@ module.exports = function(app){
 
 	//Service to connect google clientID auth
 	app.post('/auth/google', function(req, res) {
-	console.log("===============================");
+	console.log("===========++++===============");
 	  var accessTokenUrl = 'https://www.googleapis.com/oauth2/v3/token';
 	  var params = {
 	    client_id: req.body.clientId,
@@ -170,7 +170,7 @@ module.exports = function(app){
 	  request.post({ url: accessTokenUrl, form: params, json: true }, function(error, response, body) {
 
 	    // Step 2a. Link user accounts.
-	   /* if (req.headers.authorization) {
+	    if (req.headers.authorization) {
 	      console.log(params+"======="+body);
 	      User.findOne({ instagramId: body.user.id }, function(err, existingUser) {
 
@@ -232,7 +232,7 @@ module.exports = function(app){
 	          res.send({ token: token, user: user });
 	        });
 	      });
-	    } */
+	    } 
 	  });
 	});
 	
