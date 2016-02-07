@@ -56,7 +56,7 @@ angular
         templateUrl: 'views/signup.html',
         controller: 'LoginCtrl',
         controllerAs: 'loginctrl'
-      }).when('/profile', {
+      }).when('/:username', {
         templateUrl: 'views/profile.html',
         controller: 'ProfileCtrl',
         controllerAs: 'profilectrl',
@@ -67,6 +67,8 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+
+      
       
   
      <!-- Auth Provider -->  

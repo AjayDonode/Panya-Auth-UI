@@ -51,13 +51,13 @@ angular.module('panyaGalaryApp')
                     password: $scope.password
                 })
                 .then(function(response) {
-                    var user = JSON.stringify(response.data.user);
+                    var user = response.data.user;
                     localStorage.currentUser = user;
-                    // sessionStorage.setItem('user',JSON.stringify(response.data.user));
-                    // sessionStorage.setItem('token',JSON.stringify(response.satellizer_token));
                     $rootScope.currentUser = response.data.user;
                     $rootScope.isLoggedIn = true;
-                    $location.path('/sell');
+                    console.log("User Role is "+user.role)
+                    if(user.role!=0) {$location.path('/sell');} 
+                    else {$location.path('/');}
                 })
                 .catch(function(response) {
                     $scope.errorMessage = {};

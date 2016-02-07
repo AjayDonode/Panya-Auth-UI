@@ -34,6 +34,7 @@ module.exports = function(config) {
       'bower_components/angular-messages/angular-messages.js',
       'bower_components/ng-file-upload/angular-file-upload.js',
       'bower_components/satellizer/satellizer.js',
+      'bower_components/select2/select2.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",

@@ -10,9 +10,21 @@
 angular.module('panyaGalaryApp')
   .controller('SellCtrl', function ($scope,$auth,$location, $upload, $rootScope,fileReader) {
   
+     $scope.showModal = false;
+
      $scope.isAuthenticated = function() {
       return $auth.isAuthenticated();
     };
+
+    $scope.isPublisher = function() {
+        var publisher = ($rootScope.currentUser.role==0);    
+        return publisher;
+    };  
+
+    $scope.uploadCover = function() {
+        console.log("ROle in Sell New");
+        $scope.showModal = true;
+    };  
 
     $scope.linkInstagram = function() {
       $auth.link('instagram')

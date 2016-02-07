@@ -8,8 +8,10 @@
  * Controller of the panyaGalaryApp
  */
 angular.module('panyaGalaryApp')
-  .controller('ProfileCtrl', function ($scope,$auth) {
+  .controller('ProfileCtrl', function ($scope,$auth,$routeParams) {
   
+    $scope.username = $routeParams.username;
+
      $scope.isAuthenticated = function() {
       return $auth.isAuthenticated();
     };
