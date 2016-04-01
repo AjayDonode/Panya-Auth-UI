@@ -23,4 +23,4 @@ module.exports = {
   User: User,
   Category: Category
 }
-mongoose.connect(config.db);
+mongoose.connect("mongodb://panyauser:panyapass@ds011810.mlab.com:11810/panyadbtest");
