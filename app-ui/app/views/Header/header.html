@@ -7,45 +7,54 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-       <a class="navbar-brand" href="#">
+       <a class="navbar-brand" href="#/">
        <span class="glyphicon glyphicon-star-empty"></span>
         <!-- img alt="Brand" src="../images/panyalogo.png" -->
       </a>
-      <a class="navbar-brand" href="#">Panya</a>
+      <a class="navbar-brand" href="#/">Panya</a>
     </div>
     
    <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
+      <!-- ul class="nav navbar-nav">
         <li class="active"><a href="#">Buy<span class="sr-only">(current)</span></a></li>
         <li><a href="#sell">Sell</a></li>
 
-      </ul>
-      <form class="navbar-form navbar-left form-inline" role="search">
-          <input type="text" class="span2" placeholder="Search">
-          <input class="span2"  type="text" placeholder="Location">
-          <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+      </ul -->
+     
+     <form class="navbar-form navbar-left form-inline center" role="search">
+          <div class="form-group">
+            <div class="input-group">
+                <input type="text" class="form-control" id="categoryName" placeholder="Search " ng-model="category.name">
+                <span class="input-group-btn">
+               <button type="button" class="btn btn-success" ng-click="search()">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </span>
 
+          </div>
+        </div>
       </form>
+     <div>
       <ul class="nav navbar-nav navbar-right">
-        
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{user.username}}<span class="caret"></span></a>
+          <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{currentUser.name}} {{currentUser.lastname}}<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">Profile</a></li>
             <li><a href="#">Settings</a></li>
             <li><a href="#">Invite Friends</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Add Galary</a></li>
+            <li><a href="#/sell"> + Post</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">Help</a></li>
             <li><a href="#">About Us</a></li>
             <li><a href="#">Report problem</a></li>
           </ul>
         </li>
-        <li><a href="#/login" ng-hide="{{userObject.isLogin}}">Login</a></li>
-        <li><a ng-click="logout()" ng-show="{{userObject.isLogin}}" href="">Logout</a></li>
+        <li ng-hide="isLogin"><a href="#/login" >Login</a></li>
+        <li ng-show="isLogin"><a href="" ng-click="logout()" >Logout</a></li>
       </ul>
+      </div>
     </div><!-- /.navbar-collapse -->
   </div>
 </nav>

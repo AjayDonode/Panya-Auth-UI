@@ -1,0 +1,261 @@
+$profile-card-width: 100%;
+$profile-card-height: 300px;
+
+
+ .profile {
+    min-width: 730px;
+  }
+
+.profile-card {
+  background: url('https://pbs.twimg.com/profile_banners/1330944336/1401769745/1500x500') top right no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+  width: $profile-card-width;
+  height: $profile-card-height;
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-card__door {
+  width: $profile-card-width*0.5;
+  left: 0;
+  position: relative;
+  transition: all .5s ease-in-out;
+}
+
+.profile-card__door:hover {
+  box-shadow: inset $profile-card-width 0 200px white;
+}
+
+.profile-card__front,
+.profile-card__back {
+  text-align: center;
+  width: $profile-card-width;
+  float: left;
+  color: white;
+  position: relative;
+  text-shadow: 0 1px 0 black;
+  font-size: 0.9em;
+
+}
+
+.profile-card__avatar {
+  border: 1px solid white;
+  border-radius: 5px;
+  width: 100px;
+  height: 100px;
+}
+
+.ProfileCanopy-navBar {
+    background-color: #e7e7e7;
+    border-bottom: 1px solid #cccccc;
+    border-left: 1px solid #cccccc;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 52px;
+  }
+
+  .ProfileCanopy-galary {
+    background-color: #FFFFFF;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 100%;
+  }
+
+  .PromptbirdPrompt {
+    background: #fff;
+    display: none;
+    padding: 44px 66px;
+    position: relative;
+    text-align: center;
+}
+
+.upload {
+position: absolute;
+bottom: 0;
+right:0;
+}
+
+.icon-cog:after {
+  font-family: "Glyphicons Halflings";
+  content: "\e080";
+}
+/* General button style (reset) */
+.btn-u {
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: none;
+  cursor: pointer;
+  padding: 25px 80px;
+  display: inline-block;
+  margin: 15px 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  outline: none;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.btn-u:before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  background: #e1e1e1;
+  border: 1px solid #red;
+}
+
+/* Pseudo elements for icons */
+.btn-u:after,
+.icon-cog:before{
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Button 5 */
+.btn-5 {
+  color: #fff;
+  height: 70px;
+  min-width: 260px;
+  line-height: 24px;
+  font-size: 16px;
+  overflow: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.btn-5:active {
+  background: #9053a9;
+  top: 2px;
+}
+
+.btn-5 span {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: all 0.3s;
+  -webkit-backface-visibility: hidden;
+  -moz-transition: all 0.3s;
+  -moz-backface-visibility: hidden;
+  transition: all 0.3s;
+  backface-visibility: hidden;
+}
+
+.btn-5:before {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  line-height: 2.5;
+  font-size: 180%;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.btn-5:active:before {
+  color: #703b87;
+}
+
+/* Button 5b */
+.btn-5b:hover span {
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.btn-5b:before {
+  left: -100%;
+  top: 0;
+}
+
+.btn-5b:hover:before {
+  left: 0;
+}
+
+.uploadCoberbtn {
+    color: #fff;
+    height: 40px;
+    min-width: 50px;
+    line-height: 25px;
+    font-size: 16px;
+    overflow: hidden;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+    position: absolute;
+}
+
+.uploadCoberbtn:hover {
+    min-width: 50px;
+    font-size: 16px;
+    background: #e1e1e1;
+    border: 1px solid #d0d0d0;
+    padding-top:0;
+}
+
+@media screen and (max-width: 500px) {
+
+  .profile-card {
+    background: "";
+    background-size: cover;
+    margin: 0 px;
+    width: 500px;
+    height: 50px;
+  }
+
+  .profile {
+    min-width: 500px;
+   }
+
+  .profile-card__door {
+  width: $profile-card-width*0.5;
+  left: 0;
+  position: relative;
+  transition: all .5s ease-in-out;
+}
+
+.profile-card__door:hover {
+  box-shadow: inset 500 0 50px black;
+}
+
+.profile-card__front,
+.profile-card__back {
+  text-align: center;
+  width: 500;
+  float: left;
+  color: white;
+  position: relative;
+  text-shadow: 0 1px 0 black;
+  font-size: 0.9em;
+
+
+}
+
+.profile-card__avatar {
+  border: 2px solid white;
+  border-radius: 5px;
+  width: 50px;
+  height: 50px;
+}
+}
+
+
+
+
+

@@ -1,6 +1,6 @@
-<div class="container">
+<div class="profile">
 
-  <div ng-if="isAuthenticated() && currentUser.username">
+  <!--div ng-if="isAuthenticated() && currentUser.username">
     <div class="row">
       <div ng-repeat="photo in photos" class="col-lg-2 col-sm-3 col-xs-4">
         <a href="#/photo/{{photo.id}}">
@@ -29,6 +29,156 @@
         <i class="ion-social-instagram"></i> Sign in with Instagram
       </button>
     </div>
+  </div -->
+  <div class="profile-card">
+    <div class="profile-card__door">
+      <div class="profile-card__front">
+        <img src="https://pbs.twimg.com/profile_images/378800000107983641/e07f88f9eee6a64ab1cc0c69dd1ff314.jpeg" alt=""
+             class="profile-card__avatar">
+             <div > <a  ng-click="uploadCover" class="btn" >
+              <span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"> </span> 
+          </a>
+    </div>
+        <p>{{currentUser.name}} {{currentUser.lastname}}</p>
+      </div>
+    </div>
+    <div > <a ng-click="uploadCover()" class="btn upload" >
+              <span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"> Upload </span> 
+
+          </a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3" style="padding-right: 0">
+      <div class="sidebar-nav">
+        <div class="navbar navbar-default" role="navigation">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <div class="navbar-collapse collapse sidebar-navbar">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#"><span class="glyphicon glyphicon-inbox"></span> Messages</a></li>
+              <li><a href="#"><span class="glyphicon glyphicon-th-list"> My Galary</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li class="dropdown-header">Nav header</li>
+                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">One more separated link</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Menu Item 4</a></li>
+              <li><a href="#"><span class="glyphicon glyphicon-comment"> Reviews<span class="badge">20</span></a></li>
+              <br>
+
+            </ul>
+          </div>
+          <!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-sm-9" style="padding-left: 0">
+      <div class="ProfileCanopy-navBar">
+      </div>
+      <div class="js-prompt-layout-content">
+      <div class="PromptbirdPrompt PromptbirdPrompt--inline"  ng-if="isPublisher()" style="display: block;" >
+          <h3 class="PromptbirdPrompt-title">Create Publisher profile</h3>
+        <form method="post" ng-submit="addPublisherProfile()" name="profileForm" lass="col-sm-4">
+
+        <div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.name.$invalid && signupForm.name.$dirty }">
+          <input class="form-control input" type="text" id="title" name="title" ng-model="title" placeholder="Title" required>
+          <span class="ion-at form-control-feedback"></span>
+        </div>
+
+        <div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.tagline.$invalid && signupForm.tagline.$dirty }">
+          <input class="form-control input" type="text" id="tagline" name="tagline" ng-model="tagline" placeholder="Tag Line" required>
+          <span class="ion-at form-control-feedback"></span>
+        </div>
+       
+        <div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.email.$invalid && signupForm.email.$dirty }">
+          <select class="form-control">
+            <option value="2" selected="selected">duplicate</option>
+          </select>
+          <span class="ion-at form-control-feedback"></span>
+        </div>
+
+        <div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.password.$invalid && signupForm.password.$dirty }">
+          <input class="form-control input" type="password" name="password" ng-model="password" placeholder="Password" required>
+          <span class="ion-key form-control-feedback"></span>
+        </div>
+
+        <div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.age.$invalid && signupForm.age.$dirty }">
+          <input class="form-control input" type="text" id="age" name="age" ng-model="age" placeholder="Age" required>
+          <span class="ion-at form-control-feedback"></span>
+        </div>
+
+       
+        <button type="submit" class="btn btn-block btn-primary">Next >> </button>
+       
+      </form>
+
+      </div>
+        <div class="PromptbirdPrompt PromptbirdPrompt--inline" data-prompt-id="2446" data-prompt-intent=""
+             data-prompt-intent-params="" style="display: block;">
+          <h3 class="PromptbirdPrompt-title">No images in your galary, Create one.</h3>
+          <input id="photos" type="file" class="btn" ng-file-select="onFileSelect($files)" multiple>
+          <div class="row">
+            <div ng-repeat="file in files" class="col-md-4">
+              <div
+                style="width: 200px; height: 200px; border: thick solid #666666; overflow: hidden; position: relative;">
+                <img img id="{{file.name}}" title="{{file.name}}" src="{{images[$index]}}"
+                     style="position: absolute; left:-37px; "/>
+              </div>
+              <!-- <a href="#" class="thumbnail"><img id="{{file.name}}" title="{{file.name}}" src="{{images[$index]}}" class="img-responsive"> -->
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width:{{file.progress}}%;">
+                  {{file.name}} : {{file.progress}}
+                </div>
+              </div>
+              <button class="btn btn-ttc" type="button" ng-click="abort($index)" ng-show="file.progress != 100">Abort
+              </button>
+              <!-- </a> -->
+            </div>
+          </div>
+            <button ng-click="toggleModal()" class="btn btn-default">Open modal</button>
+    
+          <button type="button" class="btn btn-success" tabindex="-1">
+            <span class="Icon Icon--close Icon--smallest">
+              <span class="visuallyhidden">
+                Publish
+              </span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+   <modal title="Upload Cover" visible="showModal" width="100%">
+   <span>Select cover Image</span>
+    <div class="fileinput fileinput-new" data-provides="fileinput">
+          <label>Image uploader</label>
+          <div class="fileinput-new thumbnail">
+            <img data-src="" src="/assets/example/bg_suburb.jpg" class="img-responsive">
+          </div>
+          <div class="fileinput-preview fileinput-exists thumbnail"></div>
+          <div>
+            <span class="btn btn-default btn-file"><span class="fileinput-new">Select image...</span><span class="fileinput-exists">Change</span><input type="file" name="..."></span>
+            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+          </div>
+        </div>
+  </modal>
+  
   </div>
 
-</div>
+

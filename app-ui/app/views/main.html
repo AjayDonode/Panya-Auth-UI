@@ -1,12 +1,41 @@
-<div class="jumbotron">
-  <h1>Hello Ajay</h1>
+<div class="jumbotron main" ng-init="init()">
+  <h1> { Panya }</h1>
   <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
+    <img src="images/panya-logo.png" alt="-:: Panya Logo ::-"><br><br>
+    Open Marketplace for Everyone
   </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
+  
+<div>
+	<form class="form-horizontal" role="form">
+		<div class="form-group">
+		    <label for="categoryName" class="col-sm-4 control-label">Category</label>
+		        <div class="col-sm-4 input-group">
+		            <input type="text" class="form-control" id="categoryName" placeholder="Add/Update Category" ng-model="category.name">
+		            <span class="input-group-btn">
+	    				<button type="button" class="btn btn-success" ng-click="addCategory()">
+	          				<span class="glyphicon glyphicon-plus"></span>
+	        			</button>
+  					</span>
+			    </div>
+		</div>
+	</form>
+</div> <!--Catagory Block -->
+
+<div class="row">
+  	<div ng-repeat="category in categories">
+  	 <div class = "col-sm-6 col-md-3">
+  	 <div class="thumbnail">
+  	 <a class="close" ng-click="removeCategory({{category}})" href="">×</a>
+      <img src="images/yeoman.png" alt="{{category.name}}">
+      <div class="caption">
+        <h3>{{category.name}}</h3>
+        <p>{{category.description}}</p>
+        
+      </div>
+    </div>
+ 		 
+ 	 </div>
 </div>
 
-<div class="row marketing">
-  
 </div>
+
