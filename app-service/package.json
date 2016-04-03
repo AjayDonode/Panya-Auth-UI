@@ -3,7 +3,8 @@
   "name": "Panya-service",
   "version": "0.0.0",
   "scripts": {
-    "start": "node server.js"
+    "start": "NODE_ENV=production nodemon ./bin/www",
+    "test": "NODE_ENV=development nodemon ./bin/www"
   },
   "dependencies": {
     "bcryptjs": "^2.0.2",

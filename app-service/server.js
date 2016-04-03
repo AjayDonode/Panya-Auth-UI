@@ -12,7 +12,7 @@ var path = require('path');
 var app = express();
 
 var corsOptions = {
-	origin: 'http://localhost:9000',
+	origin: 'http://localhost:9092',
 	credentials: true
 };
 
@@ -24,7 +24,25 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
-//app.use(express.bodyParser({uploadDir:__dirname + '/public/uploads'}));
+
+/**
+ * Production Settings
+ */
+if (app.get('env') === 'production') {
+
+	// changes it to use the optimized version for production
+	app.use(express.static(path.join(__dirname, '/dist')));
+
+	// production error handler
+	// no stacktraces leaked to user
+	app.use(function(err, req, res, next) {
+		res.status(err.status || 500);
+		res.render('error', {
+			message: err.message,
+			error: {}
+		});
+	});
+}
 
 require('./scripts/api')(app);
 require('./scripts/CategoryApi')(app);
@@ -32,3 +50,6 @@ require('./scripts/CategoryApi')(app);
 app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
 });
+
+
+module.exports = app;

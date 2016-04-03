@@ -9,6 +9,9 @@
  */
 angular.module('panyaGalaryApp')
   .controller('MainCtrl', function ($scope,$auth,CategoryService) {
+
+
+
     $scope.category = {};
     $scope.categories = [];
     

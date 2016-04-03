@@ -68,8 +68,7 @@ angular
         redirectTo: '/'
       });
 
-      
-      
+
   
      <!-- Auth Provider -->  
     $authProvider.loginUrl = 'http://localhost:3000/auth/login';

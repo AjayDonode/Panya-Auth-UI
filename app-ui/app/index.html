@@ -23,7 +23,8 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div header ng-model="userName"></div>
+    <!--div header ng-model="userName"></div -->
+    <div ng-include="'views/Header/header.html'"></div>
     <div ng-view=""></div>
      
     <div ng-include="'views/Header/footer.html'"></div>
