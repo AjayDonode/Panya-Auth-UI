@@ -3,7 +3,8 @@
 /.tmp
 /.sass-cache
 /bower_components
-/app-ui/.tmp/
+app-ui/.tmp/
+app-ui/.sass-cache/
 /app-service/dist/
 app-service/Archive.zip
 
