@@ -12,7 +12,7 @@ var path = require('path');
 var app = express();
 
 var corsOptions = {
-	origin: 'http://localhost:9092',
+	origin: 'http://localhost:9000',
 	credentials: true
 };
 

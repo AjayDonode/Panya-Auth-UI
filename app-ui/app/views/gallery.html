@@ -1,0 +1,280 @@
+<div class="row">
+    <div class="col-md-2">
+        <div class="generic-container"></div>
+    </div>
+    <div class="col-md-8">
+        <div class="generic-container">
+          
+            <div class="panel panel-default panel-ui">
+                <!-- Default panel contents -->
+                <div class="panel-heading"><span class="lead">List of Tests </span></div>
+                <div ng-repeat="testData in testDataList | orderBy: '-updated_at'| filterMultiple: {name:searchName,brand:searchBrand , status:searchStatus}" class='slatcontainer'>
+                    <div class='slat'>
+                         <div class="media">
+                            <div class="pull-left mt-10 thumb slat-brand-img"> <img class="media-object img-circle-sm" src="images/{{testData.brand}}-Logo.png" alt="{{testData.brand}}"></div>
+                            <div class="pull-right mt-10">
+                                <button type="button" ng-click="edit(testData._id)" class="btn btn-success btn-round btn-xs">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                </button>
+                                <button type="button" ng-click="remove(testData._id)" class="btn btn-danger btn-round btn-xs ">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </button>
+                            </div>
+                            <div class="media-body">
+                                <p class="media-heading mb-0 mt-5">
+                                    <a ng-href="" ng-click="editDetail(testData._id)"> <span class="slat-label" ng-bind="testData.name"></span></a>
+                                    <br>
+                                    <span style="font-weight:bold">Brand :</span> <span ng-bind="testData.brand"></span>
+                                    <br>
+                                    <span style="font-weight:bold">Created On :</span> <span ng-bind="testData.created_at | date:'MM/dd/yyyy'"></span>
+                                    <br>
+                                    <span style="font-weight:bold">Update On :</span> <span ng-bind="testData.updated_at | date:'dd/MM/yyyy' "></span>
+                                </p>
+                            </div>
+                            <div class="media-body">
+                                <p class="media-heading mb-0 mt-5">
+                                    <span style="font-weight:bold">Status :</span> <span ng-bind="testData.status"></span>
+                                    <br>
+                                    <span style="font-weight:bold">Created By :</span> <span ng-bind="testData.created_by | date:'MM/dd/yyyy' "></span>
+                                    <br>
+                                    <span style="font-weight:bold">Details :</span> <span ng-bind="testData.details"></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <modal id="rapidTestModal" title="Test Details" visible="showModal">
+                <div class="formcontainer">
+                    <form ng-submit="submit()" name="myForm" class="form-horizontal">
+                        <!--Start of Form-->
+                        <ul class="nav nav-tabs">
+                            <li ng-repeat="step in steps" ng-class="{active: $index==getCurrentStepIndex()}">
+                                <a href="javascript:void(0)" ng-click="goToStep($index)">{{step}}</a>
+                            </li>
+                        </ul>
+                        <br>
+                        <div ng-switch on="selection">
+                            <div ng-switch-when="Step 1: Test Request">
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <label class="col-md-4 control-lable text-right" for="towner">Primary Test Contact</label>
+                                        <div class="col-md-6">
+                                            <input type="text" ng-model="testData.owner" id="towner" class="input-text form-control input-sm" placeholder="Primary Test Contact" required ng-minlength="3" />
+                                            <div class="has-error" ng-show="myForm.$dirty">
+                                                <span ng-show="myForm.towner.$error.required">This is a required field</span>
+                                                <span ng-show="myForm.towner.$error.minlength">Minimum length required is 3</span>
+                                                <span ng-show="myForm.towner.$invalid">This field is invalid </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-md-4 control-lable text-right" for="approver">Test Approver</label>
+                                        <div class="col-md-6">
+                                            <input type="text" ng-model="testData.approver" id="approver" class="input-text form-control input-sm" placeholder="Select Test Approver" typeahead="user.name for user in userList | filter:$viewValue" required />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <label class="col-md-4 control-lable text-right" for="uname">Test Name</label>
+                                        <div class="col-md-6">
+                                            <input type="text" ng-model="testData.name" id="tname" class="input-text form-control input-sm" placeholder="Enter Test Name" required ng-minlength="3" />
+                                            <div class="has-error" ng-show="myForm.$dirty">
+                                                <span ng-show="myForm.uname.$error.required">This is a required field</span>
+                                                <span ng-show="myForm.uname.$error.minlength">Minimum length required is 3</span>
+                                                <span ng-show="myForm.uname.$invalid">This field is invalid </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-md-4 control-lable text-right" for="brand">Brand</label>
+                                        <div class="col-md-6">
+                                            <select class="form-control" id="brand" ng-model="testData.brand" ng-options="brand for brand in data.brands" required="">
+                                                <option value="">Select Brand</option>
+                                            </select>
+                                            <div class="has-error" ng-show="myForm.$dirty">
+                                                <span ng-show="myForm.brand.$error.required">This is a required field</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-md-4 control-lable text-right" for="market">Market</label>
+                                        <div class="col-md-6">
+                                            <select class="form-control" id="market" ng-model="testData.market" ng-options="market for market in data.markets" required="" multiple>
+                                            </select>
+                                            <div class="has-error" ng-show="myForm.$dirty">
+                                                <span ng-show="myForm.dividion.$error.required">This is a required field</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-md-4 control-lable text-right" for="division">Divsion</label>
+                                        <div class="col-md-6">
+                                            <select class="form-control" id="division" ng-model="testData.division" ng-options="division for division in data.divisions" required="">
+                                                <option value="">Select Division</option>
+                                            </select>
+                                            <div class="has-error" ng-show="myForm.$dirty">
+                                                <span ng-show="myForm.dividion.$error.required">This is a required field</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-md-4 control-lable text-right" for="department">Department</label>
+                                        <div class="col-md-6">
+                                            <input type="text" ng-model="testData.department" id="department" class="input-text form-control input-sm" placeholder="Enter Department Name" required ng-minlength="3" />
+                                            <div class="has-error" ng-show="myForm.$dirty">
+                                                <span ng-show="myForm.dividion.$error.required">This is a required field</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-md-4 control-lable text-right" for="class">Class</label>
+                                        <div class="col-md-6">
+                                            <input type="text" ng-model="testData.class" id="class" class="input-text form-control input-sm" placeholder="Enter Class Name" required ng-minlength="3" />
+                                            <div class="has-error" ng-show="myForm.$dirty">
+                                                <span ng-show="myForm.class.$error.required">This is a required field</span>
+                                                <span ng-show="myForm.class.$error.minlength">Minimum length required is 3</span>
+                                                <span ng-show="myForm.class.$invalid">This field is invalid </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-md-4 control-lable text-right" for="type">Test Type</label>
+                                        <div class="col-md-6">
+                                            <select class="form-control" id="type" ng-model="testData.type" ng-options="type for type in data.types" required="">
+                                                <option value="">Select Test Type</option>
+                                            </select>
+                                            <div class="has-error" ng-show="myForm.$dirty">
+                                                <span ng-show="myForm.type.$error.required">This is a required field</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <label class="col-md-4 control-lable text-right" for="details">What Are We Going To Test</label>
+                                        <div class="col-md-6">
+                                            <textarea type="text" ng-model="testData.details" id="details" class="input-text form-control input-sm" placeholder="Enter Description" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-md-4 control-lable text-right" for="type">Test Output</label>
+                                        <div class="col-md-6">
+                                            <select class="form-control" id="output" ng-model="testData.output" ng-options="output for output in data.outputs" required="">
+                                                <option value="">Select Test Output</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-md-4 control-lable text-right" for="type">Secondary Test Output</label>
+                                        <div class="col-md-6">
+                                            <select class="form-control" id="secoutput" ng-model="testData.secoutput" ng-options="output for output in data.outputs">
+                                                <option value="">Select Secondary Output</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <label class="col-md-4 control-lable text-right" for="objective">Test Objectives</label>
+                                        <div class="col-md-6">
+                                            <input type="text" ng-model="testData.objective" id="" class="input-text form-control input-sm" placeholder="Enter Test Objectives" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-md-4 control-lable text-right" for="stylecount"># of Styles</label>
+                                        <div class="col-md-6">
+                                            <input type="text" ng-model="testData.stylecount" id="" class="input-text form-control input-sm" placeholder="Enter # of Styles" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-md-4 control-lable text-right" for="cc_count"># of CCs</label>
+                                        <div class="col-md-6">
+                                            <input type="text" ng-model="testData.cc_count" id="" class="input-text form-control input-sm" placeholder="Enter # of CCs" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-md-4 control-lable text-right" for="retailvalue">Anual retail value</label>
+                                        <div class="col-md-6">
+                                            <input type="text" ng-model="testData.retailvalue" id="" class="input-text form-control input-sm" placeholder="Enter Anual retail value" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-md-4 control-lable text-right" for="bizimpact">Est Business Impact</label>
+                                        <div class="col-md-6">
+                                            <input type="text" ng-model="testData.bizimpact" id="" class="input-text form-control input-sm" placeholder="Enter Est Business Impact" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-md-4 control-lable text-right" for="testweeks">In Season Time on Offer (weeks)</label>
+                                        <div class="col-md-6">
+                                            <input type="text" ng-model="testData.testweeks" id="testweeks" class="input-text form-control input-sm" placeholder="Enter Time on Offer" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-md-4 control-lable text-right" for="type">First In-season Offer Flow Month</label>
+                                        <div class="col-md-6">
+                                            <select class="form-control" id="offerflowmonth" ng-model="testData.offerflowmonth" ng-options="month for month in data.months" required="">
+                                                <option value="">Select Month</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-md-4 control-lable text-right" for="startdate">Product Availability Date</label>
+                                        <div class="col-md-6">
+                                            <input type="date" ng-model="testData.requestdate" id="requestdate" class="input-text form-control input-sm" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="col-md-4 control-lable text-right" for="resultdate">Result Handoff Date</label>
+                                        <div class="col-md-6">
+                                            <input type="date" ng-model="testData.resultdate" id="resultdate" class="input-text form-control input-sm" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <label class="col-md-4 control-lable text-right" for="status">Status</label>
+                                        <div class="col-md-6">
+                                            <select class="form-control" id="status" ng-model="testData.status" ng-options="status for status in data.status" required=""> </select>
+                                            <div class="has-error" ng-show="myForm.$dirty">
+                                                <span ng-show="myForm.status.$error.required">This is a required field</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Third Step -->
+                            <div ng-switch-when="Step 2: Test Details">
+                                <h1>Step 2</h1>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <input type="submit" value="{{!testData._id ? 'Add' : 'Update'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid">
+                            <button type="button" ng-click="reset()" class="btn btn-warning btn-sm" ng-disabled="myForm.$pristine">Reset Form</button>
+                        </div>
+                </div>
+        </div>
+    </div>
+    </form>
+    <!--End of Form-->
+</div>
+</modal>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#filter-status')
+        .select2();
+
+    $('#filter-brand')
+        .select2();
+
+});
+</script>
+<!--div class="col-md-3">
+    <div class="generic-container"> Hello </div>
+</div-->

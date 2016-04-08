@@ -56,6 +56,10 @@ angular
         templateUrl: 'views/signup.html',
         controller: 'LoginCtrl',
         controllerAs: 'loginctrl'
+      }).when('/gallery', {
+        templateUrl: 'views/gallery.html',
+        controller: 'GalleryCtrl',
+        controllerAs: 'galleryCtrl'
       }).when('/:username', {
         templateUrl: 'views/profile.html',
         controller: 'ProfileCtrl',
@@ -63,6 +67,10 @@ angular
         resolve: {
           loginRequired: loginRequired
         }
+      }).when('/testpage', {
+        templateUrl: 'views/gallery.html',
+        controller: 'GalleryCtrl',
+        controllerAs: 'galleryCtrl'
       })
       .otherwise({
         redirectTo: '/'

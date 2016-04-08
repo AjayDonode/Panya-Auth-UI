@@ -19,6 +19,14 @@ var Category = mongoose.model('Category', new Schema({
   createdOn: { type: Date }
 }));
 
+var Gallery = mongoose.model('Gallery', new Schema({
+  name: { type: String },
+  owner: { type: String },
+  approver: { type: String },
+  brand: { type: String },
+  market: { type: String }  
+}));
+
 module.exports = {
   User: User,
   Category: Category

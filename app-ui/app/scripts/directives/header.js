@@ -3,7 +3,7 @@ angular.module('panyaGalaryApp')
     return {
         restrict: 'AE', //This menas that it will be used as an attribute and NOT as an element. I don't like creating custom HTML elements
         replace: true,
-        templateUrl: "/views/Header/header.html",
+        templateUrl: "views/Header/header.html",
         controller: ['$scope', '$rootScope','$auth', '$filter','$location', function ($scope,$rootScope,$auth,$filter,$location) {
             // Your behaviour goes here :)
        
