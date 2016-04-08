@@ -4,6 +4,8 @@
 /.sass-cache
 /bower_components
 /app-ui/.tmp/
+/app-service/dist/
+app-service/Archive.zip
 
 # Logs
 logs
