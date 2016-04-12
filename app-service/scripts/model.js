@@ -27,8 +27,19 @@ var Gallery = mongoose.model('Gallery', new Schema({
   market: { type: String }  
 }));
 
+var UserProfile = mongoose.model('UserProfile', new Schema({
+  id: { type: String, index: true },
+  name: { type: String, unique: true},
+  description: { type: String},
+  categories: [Category],
+  createdOn: { type: Date }
+}));
+
 module.exports = {
   User: User,
-  Category: Category
+  Category: Category,
+  UserProfile:UserProfile
 }
-mongoose.connect("mongodb://panyauser:panyapass@ds011810.mlab.com:11810/panyadbtest");
+//mongoose.connect("mongodb://panyauser:panyapass@ds011810.mlab.com:11810/panyadbtest");
+
+mongoose.connect("mongodb://localhost/panyadbtest");

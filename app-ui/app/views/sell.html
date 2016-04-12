@@ -79,71 +79,31 @@
         <div class="col-sm-8" style="padding-left: 0">
             <div class="ProfileCanopy-navBar">
             </div>
-            <div >
-                <div class="PromptbirdPrompt PromptbirdPrompt--inline" ng-if="isPublisher()" style="display: block;">
-                    <h4>You dont have Publisher Profile to post anything</h4>
-                    <form method="post" ng-submit="addPublisherProfile()" name="profileForm" lass="col-sm-4">
-                        <div class="panel panel-default panel-ui">
-                            <div class="panel-heading"><span class="lead">Create Publisher profile</span></div>
-                            <div class="form-group col-md-12">
-                                <label class="col-md-4 control-lable text-right" for="approver">Test Approver</label>
-                                <div class="col-md-6">
-                                    <input type="text" ng-model="testData.approver" id="approver" class="input-text form-control input-sm" placeholder="Select Test Approver" typeahead="user.name for user in userList | filter:$viewValue" required />
-                                </div>
-                            </div>
-                            <div class="form-group has-feedback" ng-class="{'has-error' : signupForm.name.$invalid && signupForm.name.$dirty }">
-                                <input class="form-control input" type="text" id="title" name="title" ng-model="title" placeholder="Enter Title" required>
+            <div class="container">
+                <div class="center-form panel">
+                    <div class="panel-body">
+                        <div ng-show="saveSuccess">Profile Created Successfully</div>
+                        <h4 class="text-center"><i class="ion-person-add"></i> Create Publisher Profile</h4>
+                        <form method="post" ng-submit="createProfile()" name="profileForm" ng-init="init()">
+                            <div class="form-group has-feedback" ng-class="{ 'has-error' : profile.name.$invalid && profile.name.$dirty }">
+                                <input class="form-control input-lg" type="text" id="name" name="name" ng-model="profile.name" placeholder="Profile Name" required>
                                 <span class="ion-at form-control-feedback"></span>
                             </div>
-                            <div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.tagline.$invalid && signupForm.tagline.$dirty }">
-                                <input class="form-control input" type="text" id="tagline" name="tagline" ng-model="tagline" placeholder="Tag Line" required>
+                            <div class="form-group has-feedback" ng-class="{ 'has-error' : profile.description.$invalid && profileForm.description.$dirty }">
+                                <textarea class="form-control input-lg" type="text" id="description" name="profile.description" ng-model="profile.description" placeholder="Profile Description" required> </textarea>
                                 <span class="ion-at form-control-feedback"></span>
                             </div>
-                            <div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.email.$invalid && signupForm.email.$dirty }">
-                                <select class="form-control">
-                                    <option value="2" selected="selected">duplicate</option>
-                                </select>
-                                <span class="ion-at form-control-feedback"></span>
+                            <div class="form-group has-feedback" ng-class="{ 'has-error' : profile.category.$invalid && profile.category.$dirty }">
+                                <select class="form-control input-lg" id="category" ng-model="profile.category" ng-options="category.name for category in categories" required="">
+                                        <option value="">Select Category</option>
+                                    </select>
                             </div>
-                            <div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.password.$invalid && signupForm.password.$dirty }">
-                                <input class="form-control input" type="password" name="password" ng-model="password" placeholder="Password" required>
-                                <span class="ion-key form-control-feedback"></span>
+                            <div>
+                                <button type="submit" class="btn btn-lg btn-success">Submit</button>
+                                <button type="button" ng-click="reset()" class="btn btn-warning btn-lg" ng-disabled="myForm.$pristine">Clear</button>
                             </div>
-                            <div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.age.$invalid && signupForm.age.$dirty }">
-                                <input class="form-control input" type="text" id="age" name="age" ng-model="age" placeholder="Age" required>
-                                <span class="ion-at form-control-feedback"></span>
-                            </div>
-                            <button type="submit" class="btn btn-block btn-primary">Next >> </button>
-                        </div>
-                    </form>
-                </div>
-                <div class="PromptbirdPrompt PromptbirdPrompt--inline" data-prompt-id="2446" data-prompt-intent="" data-prompt-intent-params="" style="display: block;">
-                    <h3 class="PromptbirdPrompt-title">No images in your galary, Create one.</h3>
-                    <input id="photos" type="file" class="btn" ng-file-select="onFileSelect($files)" multiple>
-                    <div class="row">
-                        <div ng-repeat="file in files" class="col-md-4">
-                            <div style="width: 200px; height: 200px; border: thick solid #666666; overflow: hidden; position: relative;">
-                                <img img id="{{file.name}}" title="{{file.name}}" src="{{images[$index]}}" style="position: absolute; left:-37px; " />
-                            </div>
-                            <!-- <a href="#" class="thumbnail"><img id="{{file.name}}" title="{{file.name}}" src="{{images[$index]}}" class="img-responsive"> -->
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width:{{file.progress}}%;">
-                                    {{file.name}} : {{file.progress}}
-                                </div>
-                            </div>
-                            <button class="btn btn-ttc" type="button" ng-click="abort($index)" ng-show="file.progress != 100">Abort
-                            </button>
-                            <!-- </a> -->
-                        </div>
+                        </form>
                     </div>
-                    <button ng-click="toggleModal()" class="btn btn-default">Open modal</button>
-                    <button type="button" class="btn btn-success" tabindex="-1">
-                        <span class="Icon Icon--close Icon--smallest">
-              <span class="visuallyhidden">
-                Publish
-              </span>
-                        </span>
-                    </button>
                 </div>
             </div>
         </div>

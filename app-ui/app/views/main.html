@@ -23,19 +23,18 @@
 
 <div class="row">
   	<div ng-repeat="category in categories">
-  	 <div class = "col-sm-6 col-md-3">
-  	 <div class="thumbnail">
-  	 <a class="close" ng-click="removeCategory({{category}})" href="">×</a>
-      <img src="images/yeoman.png" alt="{{category.name}}">
-      <div class="caption">
-        <h3>{{category.name}}</h3>
-        <p>{{category.description}}</p>
-        
-      </div>
+    <div class="col-sm-6 col-md-3">
+        <div class="thumbnail">
+            <a class="close" ng-click="removeCategory({{category}})" href="">×</a>
+            <img src="images/yeoman.png" alt="{{category.name}}">
+            <div class="caption">
+                <h3>{{category.name}}</h3>
+                <p>{{category.description}}</p>
+            </div>
+        </div>
     </div>
- 		 
- 	 </div>
 </div>
+
 
 </div>
 

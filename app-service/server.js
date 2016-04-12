@@ -18,6 +18,7 @@ var corsOptions = {
 
 User = require('./scripts/model').User;
 Category = require('./scripts/model').Category;
+UserProfile = require('./scripts/model').UserProfile;
 
 app.set('port', process.env.PORT || 3000);
 app.use(cors(corsOptions));
@@ -46,6 +47,7 @@ if (app.get('env') === 'production') {
 
 require('./scripts/api')(app);
 require('./scripts/CategoryApi')(app);
+require('./scripts/ProfileApi')(app);
 
 app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));

@@ -23,11 +23,6 @@ angular
 
   .config(function ($routeProvider,$authProvider) {
 
-    // $stateProvider.state('header',{
-    //   templateUrl: '',
-    //   controller: '
-    // })
-    //route provider 
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',

@@ -26,7 +26,7 @@ angular.module('panyaGalaryApp')
             .success(function(data) {
                 if(data.success){
                     console.log("Saved Succesfully");
-                    $scope.init();
+                    loadCategories();
                 }
             }).error(function(status, data) {
                 console.log(status);
@@ -42,7 +42,7 @@ angular.module('panyaGalaryApp')
             .success(function(data) {
                 if(data.success){
                     console.log("Deleted Succesfully");
-                    $scope.init();
+                    loadCategories();
                 }
             }).error(function(status, data) {
                 console.log(status);
@@ -57,6 +57,8 @@ angular.module('panyaGalaryApp')
             .success(function(data) {
                 console.log("Loaded "+data);
                 $scope.categories = data;
+
+                localStorage.setItem('categories', JSON.stringify($scope.categories));
             }).error(function(status, data) {
                 console.log(status);
                 console.log(data);
