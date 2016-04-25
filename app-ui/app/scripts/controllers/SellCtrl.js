@@ -14,7 +14,17 @@ angular.module('panyaGalaryApp')
         $scope.categories = [];
         $scope.profile = {};
 
-
+        $scope.gallerys = [{
+            id: 1,
+            "name": "productline1",
+            "created_on": "11/11/2016",
+            "tags": "retail"
+        },{
+            id: 2,
+            "name": "fooda",
+            "created_on": "11/11/2016",
+            "tags": "restuarents"
+        }];
 
         $scope.isAuthenticated = function() {
             return $auth.isAuthenticated();
@@ -23,11 +33,8 @@ angular.module('panyaGalaryApp')
         $scope.init = function() {
             $scope.saveSuccess = false;
             $scope.profile.name = $rootScope.currentUser.name + " " + $rootScope.currentUser.lastname;
-
             $scope.categories = JSON.parse(localStorage.getItem('categories'));
-            //console.log("Categories " + categories.length);
-
-        }
+         }
 
         $scope.isPublisher = function() {
             var publisher = ($rootScope.currentUser.role == 0);
@@ -50,15 +57,15 @@ angular.module('panyaGalaryApp')
 
         $scope.createProfile = function() {
             SellService.save($scope.profile)
-             .then(function(response) {
+                .then(function(response) {
                     $scope.saveSuccess = true;
                 })
                 .catch(function(response) {
                     $scope.errorMessage = {};
-                    console.log("Error is "+response.data);
+                    console.log("Error is " + response.data);
                 });
 
-              
+
         };
 
         $scope.imageUploads = [];
@@ -96,7 +103,6 @@ angular.module('panyaGalaryApp')
                         });
                 }
             }
-
         };
 
         $scope.onUploadClicked = function() {

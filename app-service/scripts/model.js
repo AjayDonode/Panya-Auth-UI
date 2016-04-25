@@ -40,6 +40,6 @@ module.exports = {
   Category: Category,
   UserProfile:UserProfile
 }
-//mongoose.connect("mongodb://panyauser:panyapass@ds011810.mlab.com:11810/panyadbtest");
+mongoose.connect("mongodb://panyauser:panyapass@ds011810.mlab.com:11810/panyadbtest");
 
-mongoose.connect("mongodb://localhost/panyadbtest");
+//mongoose.connect("mongodb://panyauser@localhost/panyadbtest");

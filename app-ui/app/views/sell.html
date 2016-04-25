@@ -79,10 +79,11 @@
         <div class="col-sm-8" style="padding-left: 0">
             <div class="ProfileCanopy-navBar">
             </div>
+            <gallery-list> </gallery-list>
             <div class="container">
-                <div class="center-form panel">
+                
+                <div class="center-form panel border" ng-hide="saveSuccess">
                     <div class="panel-body">
-                        <div ng-show="saveSuccess">Profile Created Successfully</div>
                         <h4 class="text-center"><i class="ion-person-add"></i> Create Publisher Profile</h4>
                         <form method="post" ng-submit="createProfile()" name="profileForm" ng-init="init()">
                             <div class="form-group has-feedback" ng-class="{ 'has-error' : profile.name.$invalid && profile.name.$dirty }">
@@ -95,8 +96,8 @@
                             </div>
                             <div class="form-group has-feedback" ng-class="{ 'has-error' : profile.category.$invalid && profile.category.$dirty }">
                                 <select class="form-control input-lg" id="category" ng-model="profile.category" ng-options="category.name for category in categories" required="">
-                                        <option value="">Select Category</option>
-                                    </select>
+                                    <option value="">Select Category</option>
+                                </select>
                             </div>
                             <div>
                                 <button type="submit" class="btn btn-lg btn-success">Submit</button>
@@ -104,6 +105,9 @@
                             </div>
                         </form>
                     </div>
+                </div>
+                <div ng-show="saveSuccess">
+                    <h4> Profile Created Successfully </h4>
                 </div>
             </div>
         </div>

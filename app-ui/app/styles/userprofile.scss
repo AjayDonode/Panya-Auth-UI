@@ -7,7 +7,8 @@ $profile-card-height: 300px;
   }
 
 .profile-card {
-  background: url('https://pbs.twimg.com/profile_banners/1330944336/1401769745/1500x500') top right no-repeat;
+ // background: url('https://pbs.twimg.com/profile_banners/1330944336/1401769745/1500x500') top right no-repeat;
+   background: url('/images/app-backgrounds.jpg') top right no-repeat;
   background-size: cover;
   margin: 0 auto;
   width: $profile-card-width;

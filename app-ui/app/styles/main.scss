@@ -65,6 +65,48 @@ a:hover {
     border-radius: 0 !important;
 }
 
+.border {
+    border: 1px solid #EEE;
+}
+
+.arrows {
+  top: 10px;
+  right: 20px;
+}
+.arrows img {
+  height: 32px;
+}
+
+.add-btn{
+    width:50px;
+    height:50px;
+    background-color: #fff;
+    cursor: pointer;
+    color: #6f6f6f;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    text-align: left;
+    top: 0;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14); 
+}
+
+ .block{
+    bottom: 114px;
+    margin: 0 auto;
+    left: 0;
+    height: 48px;
+    width: 48px;
+    position: absolute;
+    right: 0;
+    display: inline-block;
+    height: 24px;
+    pointer-events: none;
+    width: 24px;
+}
+
 /* Responsive: Portrait tablets and up */
 
 @media screen and (min-width: 768px) {
@@ -222,7 +264,7 @@ a:hover {
         margin-bottom: 10px;
     }
     .DashboardProfileCard-bg {
-        background-image: url(https://pbs.twimg.com/profile_banners/1330944336/1401769745/600x200);
+        // background-image: url(https://pbs.twimg.com/profile_banners/1330944336/1401769745/600x200);
     }
     .u-bgUserColor,
     .u-bgUserColorHover:hover,
