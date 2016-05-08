@@ -8,6 +8,11 @@ Angular Component to implement Auth2.0 and Google ClientID
 1 MongoDB    : Data Store
 
 #### Getting Started
+
+# Pre Requisit 
+1. install Git 
+2. install Mongodb
+
 # Initial Setup - Installation
 1. Install Nodejs
     Use installer http://nodejs.org/
