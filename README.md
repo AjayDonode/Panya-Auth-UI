@@ -27,6 +27,7 @@ Angular Component to implement Auth2.0 and Google ClientID
     Set user account as owner of the /usr/local sudo chown -R $USER /usr/local
 3 Clone Repo
 4 Run following Commands 
+  cd app-service
   npm Install
   bower Install
   
