@@ -12,6 +12,7 @@ Angular Component to implement Auth2.0 and Google ClientID
 # Pre Requisit 
 1. install Git 
 2. install Mongodb
+3. install Ruby (for compass)
 
 # Initial Setup - Installation
 1. Install Nodejs
@@ -39,3 +40,8 @@ Step1 : Run Service
 Step2 : Run UI App
        cd app-ui
        grunt serve  
+Step3 : Compile UI first to Peoduction deploy
+       cd app-ui
+       grunt build
+       cd ../app-service
+       npm run //Final production Run
