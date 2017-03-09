@@ -1,6 +1,6 @@
 
 {
-  "name": "Panya-service",
+  "name": "circles-service",
   "version": "0.0.0",
   "scripts": {
     "start": "node server.js"
@@ -12,7 +12,7 @@
     "express": "^4.9.0",
     "jwt-simple": "^0.2.0",
     "moment": "^2.8.3",
-    "mongoose": "^3.8.17",
+    "mongoose": "^4.2.6",
     "request": "^2.44.0"
   }
 }

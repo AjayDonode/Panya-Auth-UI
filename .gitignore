@@ -3,7 +3,7 @@
 /.tmp
 /.sass-cache
 /bower_components
-
+.idea/:
 # Logs
 logs
 *.log

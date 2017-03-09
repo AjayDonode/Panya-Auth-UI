@@ -2,7 +2,7 @@ module.exports = function(app){
 	'use strict';
 	var config = require('../config');
 	var bcrypt = require('bcryptjs');
-	var moment = require('moment'); 
+	var moment = require('moment');
 	var jwt = require('jwt-simple');
 
 	/*GET users Listing*/
@@ -12,7 +12,7 @@ module.exports = function(app){
 	//var jwt = require('jsonwebtoken');
 	//var superSecret = new Buffer('walkinonsunshine', 'base64');
 
-	//test Service 
+	//test Service
 	app.get('/api/test', function(req,res){
   		return res.send("<h4> -:: Ping Ping ::- <br> Its working </h4>");
 	});
@@ -23,7 +23,7 @@ module.exports = function(app){
 	});
 
 	app.post('/auth/login', function(req, res) {
-	  	User.findOne({ email: req.body.email }, '+password', function(err, user) {
+	  	User.findOne({ username: req.body.username }, '+password', function(err, user) {
 	    if (!user) {
 	      return res.status(401).send({ message: { email: 'Incorrect email' } });
 	    }
@@ -43,15 +43,17 @@ module.exports = function(app){
 	});
 
 	app.post('/auth/signup', function(req, res) {
-	  
-	  User.findOne({ email: req.body.email }, function(err, existingUser) {
+	  console.log("Email is "+ req.body);
+    var inUser = req.body;
+	  User.findOne({ email: inUser.email }, function(err, existingUser) {
 	    if (existingUser) {
 	      return res.status(409).send({ message: 'Email is already taken.' });
 	    }
 
 	    var user = new User({
-	      email: req.body.email,
-	      password: req.body.password
+	      username: inUser.username,
+	      email: inUser.email,
+	      password: inUser.password
 	    });
 
 	    bcrypt.genSalt(10, function(err, salt) {
@@ -66,6 +68,17 @@ module.exports = function(app){
 	    });
 	  });
 	});
+
+
+  app.post("/contacts", function(req, res) {
+    var newContact = req.body;
+    //newContact.createDate = new Date();
+    console.log(newContact.email);
+    if (!(req.body.email || req.body.password)) {
+      handleError(res, "Invalid user input", "Must provide a first or last name.", 400);
+    }
+
+  });
 
 	app.post('/auth/google', function(req, res) {
 		console.log("===============================");
@@ -106,7 +119,7 @@ module.exports = function(app){
 		   }
 		 });*/
 	 });
-	
+
 	//Restrict unauthorised users from access secure resources
 	function isAuthenticated(req, res, next) {
 	  if (!(req.headers && req.headers.authorization)) {
